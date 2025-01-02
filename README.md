@@ -99,9 +99,19 @@ Extras can be found [here](./extras/).
 
 To use the Ashen theme in Ghostty, simply clone this repository and include the absolute path to the theme in your Ghostty config. For example:
 
-```Bash
-git clone https://github.com/ficcdaf/ashen.nvim.git $HOME/ashen.nvim
-echo 'theme = "$HOME/ashen.nvim/ghostty/ashen"' >> $HOME/.config/ghostty/config
+```bash
+git clone https://github.com/ficcdaf/ashen.nvim.git $home/ashen.nvim
+echo 'theme = "$home/ashen.nvim/ghostty/ashen"' >> $home/.config/ghostty/config
+```
+
+### Kitty
+
+To use the Ashen theme in Kitty, clone the repository, copy the theme into ~/.config/kitty/themes, then select the theme using the theme kitten. For example:
+
+```bash
+git clone https://github.com/ficcdaf/ashen.nvim.git $home/ashen.nvim
+cp $home/ashen.nvim/kitty/Ashen.conf ~/.config/kitty/themes
+kitten theme Ashen
 ```
 
 ## Configuration
