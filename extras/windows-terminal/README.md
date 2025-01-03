@@ -9,7 +9,7 @@
 {
     "profiles": {
         "defaults": {
-            "colorScheme":: "ashen"
+            "colorScheme": "ashen"
         }
     }
 }
