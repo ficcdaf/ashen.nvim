@@ -16,7 +16,7 @@ end
 local function setup_language(lang)
   if lang.map ~= nil then
     for name, opt in pairs(lang.map) do
-      util.hl(name, opt[1], opt[2], opt[3])
+      util.hl(name, opt)
     end
   end
   if lang.link ~= nil and lang.dot_link == nil then

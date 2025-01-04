@@ -3,21 +3,15 @@ local M = {}
 local util = require("ashen.util")
 local c = require("ashen.colors")
 
----@alias AshenHighlight [ColorName?, ColorName?, AshenTextStyle?] # Defines a highlight group.
+---@alias HighlightSpec [HexCode?, HexCode?, Style?] # Defines a highlight group.
 
----@alias TextStyle string
----| 'bold'
----| 'italic'
----| 'underline'
----| 'undercurl'
-
----@alias AshenTextStyle table<TextStyle, boolean> # Defines the text style of an AshenHighlight.
+---@alias Style table<string, boolean|string|integer> # Defines the text style of an AshenHighlight.
 
 ---@alias HighlightName string # The name of a Neovim highlight group.
+---@alias HighlightMap table<HighlightName, HighlightSpec>
 
----@class AshenMap
----@field [HighlightName] AshenHighlight
-local map = {
+---@type HighlightMap
+M.map = {
   AshenReverse = { c.g_0, c.red_ember },
   AshenRed = { c.red_ember },
   AshenRedLight = { c.red_kindling },
@@ -98,7 +92,7 @@ local map = {
   FloatBorder = { c.g_7, nil },
   FloatTitle = { c.g_0, nil },
   NormalFloat = { c.g_3, nil },
-  -- TODO: Create noice plugin table instead?
+  -- TODO: Create `noice` plugin table instead?
   NoicePopup = { c.g_3, c.g_11 },
 
   ["@character"] = { c.red_glowing, nil },
@@ -223,11 +217,24 @@ local map = {
   String = { c.red_glowing, nil },
 }
 
-M.setup = function()
-  for name, opts in pairs(map) do
+---override HL groups
+---@param opts Options
+M.setup = function(opts)
+  -- TODO: Let users provide palette color names instead of Hex codes
+  -- and check for it automatically
+  for k, v in pairs(opts.hl.merge_override or {}) do
+    M.map[k] = vim.tbl_deep_extend("force", M.map[k], v)
+  end
+  for k, v in pairs(opts.hl.force_override or {}) do
+    M.map[k] = v
+  end
+end
+
+M.load = function()
+  for name, spec in pairs(M.map) do
     -- print("Setting highlight for:", name) -- Debugging statement
-    -- print("Options:", vim.inspect(opts)) -- Debugging statement
-    util.hl(name, opts[1], opts[2], opts[3])
+    -- print("Options:", vim.inspect(spec)) -- Debugging statement
+    util.hl(name, spec)
   end
 end
 

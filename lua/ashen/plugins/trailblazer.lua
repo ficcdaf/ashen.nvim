@@ -1,8 +1,10 @@
 local M = {}
 local c = require("ashen.colors")
+local util = require("ashen.util")
 
----@param hl AshenHighlight
----@return AshenHighlight
+---@deprecated
+---@param hl HighlightSpec
+---@return HighlightSpec
 local function bolder(hl)
   local out = {
     hl[1],
@@ -13,20 +15,25 @@ local function bolder(hl)
   return out
 end
 
----@param map AshenMap
+---@param map HighlightMap
+---@return table<string, HighlightNormalized>
 local function add_inverted(map)
   local inverted = {}
-  for k, v in pairs(map) do
-    local bg = v[1]
-    local fg = v[2]
-    if not fg then
-      fg = c.g_1
+  for name, spec in pairs(map) do
+    local norm = util.normalize_hl(spec)
+    local new_bg = norm.fg
+    local new_fg = norm.bg
+    if not new_fg then
+      new_fg = c.g_1
     end
-    if bg == c.g_1 then
-      bg = c.g_8
+    if new_bg == c.g_1 then
+      new_bg = c.g_8
     end
-    inverted[k .. "Inverted"] = { fg, bg }
+    norm.fg = new_bg
+    norm.bg = new_fg
+    inverted[name .. "Inverted"] = norm
   end
+  -- dd(inverted)
   return vim.tbl_extend("error", map, inverted)
 end
 
@@ -34,15 +41,16 @@ local function process_map(pre_map)
   local map_with_inverted = add_inverted(pre_map)
   local out = {}
   for k, v in pairs(map_with_inverted) do
-    out[k] = bolder(v)
+    v.bold = true
+    out[k] = v
   end
   return out
 end
 
----@type AshenMap
+---@type HighlightMap
 local pre_map = {
-  TrailBlazerTrailMark = { c.g_1 },
-  TrailBlazerTrailMarkNext = { c.orange_blaze },
+  TrailBlazerTrailMark = { c.orange_blaze },
+  TrailBlazerTrailMarkNext = { c.orange_smolder },
   TrailBlazerTrailMarkPrevious = { c.blue },
   TrailBlazerTrailMarkCursor = { c.background, c.orange_glow },
   TrailBlazerTrailMarkNewest = { c.g_9, c.orange_blaze },

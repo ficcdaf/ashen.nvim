@@ -39,8 +39,8 @@ M.setup = function(plugins)
   for _, plugin in ipairs(plugin_modules) do
     local function set()
       if plugin.map ~= nil then
-        for name, opt in pairs(plugin.map) do
-          util.hl(name, opt[1], opt[2], opt[3])
+        for name, spec in pairs(plugin.map) do
+          util.hl(name, spec)
         end
       end
       if plugin.link ~= nil then

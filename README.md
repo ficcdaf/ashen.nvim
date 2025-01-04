@@ -111,10 +111,19 @@ The following default settings are provided. Any settings not self-explanatory w
 
 ```Lua
 {
-  -- override palette, see below
+  --- override palette, see below
   ---@type Palette
   ---@field [ColorName] HexCode
   colors = {},
+  -- override highlights
+  hl = {
+    ---Overwrite; omitted fields are cleared
+    ---@type HighlightMap
+    force_override = {},
+    ---Merge fields with defaults
+    ---@type HighlightMap
+    merge_override = {},
+  },
   -- force clear other highlights
   -- even if no other theme is set
   -- (useful for debugging)
@@ -144,7 +153,58 @@ Please see the following example:
 
 ### Highlight Override
 
-_Not yet implemented, but coming soon to an Ashen installation near you!_
+Ashen's highlight groups are defined like so:
+
+```Lua
+---@alias HighlightSpec [FgHexCode?, BgHexCode?, Style?]
+-- The colors *must* be in this ^^^ order. If you want
+-- to set a background but no foreground, you MUST pass
+-- nil for the FgHexCode!
+-- example:
+{ "#FFFFFF" } -- set only foreground
+{ "#FFFFFF", "#000000" } -- set foreground and background
+{ nil, "#000000" } -- set only background
+
+-- Please see `:h nvim_set_hl()` -> {val}
+-- for the possible style table options.
+---@alias Style table<string, boolean|string|integer>
+-- example:
+{ bold = true, underline = true }
+
+-- You may pass a style table as the LAST element
+-- of a HighlightSpec.
+{ "#FFFFFF", "#000000", { bold = true, underline = true } }
+-- The style table can be the only element, too.
+{ { bold = true, underline = true } }
+
+
+---@alias HighlightMap table<HighlightName, HighlightSpec>
+-- Example of a HighlightMap:
+{
+  Normal = { "#FFFFFF", "#000000", { bold = true, underline = true } },
+  ["@function.macro"] = { "#B14242" },
+}
+```
+
+Users can override Ashen's highlight group definitions, or set new ones entirely. There are two options under the `hl` setting: `force_override` and `merge_override`.
+
+The former will _completely_ overwrite the given highlight group; existing properties are **not** preserved. An empty table `{}` means Ashen will not touch that highlight group.
+
+The latter will _merge_ properties: it will override _only_ the properties you specify, and keep non-conflicting Ashen defaults.
+
+```Lua
+-- full example
+hl = {
+  -- overwrite every field
+  force_override = {
+    Normal = { "#FFFFFF", "#000000", { bold = true, underline = true } },
+  },
+  -- keep untouched fields
+  merge_override = {
+    ["@function.macro"] = { "#B14242" },
+  },
+},
+```
 
 ## Plugin Configuration
 
