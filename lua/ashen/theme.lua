@@ -224,24 +224,6 @@ M.transparent_bg = {
   "LineNr",
 }
 
----override HL groups
----@param opts Options
-M.setup = function(opts)
-  -- TODO: Let users provide palette color names instead of Hex codes
-  -- and check for it automatically
-  if opts.transparent then
-    for _, name in ipairs(M.transparent_bg) do
-      M.map[name] = util.remove_bg(M.map[name])
-    end
-  end
-  for k, v in pairs(opts.hl.merge_override or {}) do
-    M.map[k] = vim.tbl_deep_extend("force", M.map[k], v)
-  end
-  for k, v in pairs(opts.hl.force_override or {}) do
-    M.map[k] = v
-  end
-end
-
 M.load = function()
   for name, spec in pairs(M.map) do
     -- print("Setting highlight for:", name) -- Debugging statement

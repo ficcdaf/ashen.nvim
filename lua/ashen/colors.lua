@@ -1,9 +1,9 @@
 ---@alias ColorName string
 
 ---@alias HexCode string # Hexadecimal color code preceded by a hashtag
+---@alias Palette table<ColorName, HexCode>
 
----@class Palette
----@field [ColorName] HexCode
+---@type Palette
 local M = {
   -- used for errors
   red_flame = "#C53030", -- Brightest, most intense red
@@ -81,14 +81,5 @@ local M = {
   aqua = "#4AC4C4", -- Bright aqua
   coral = "#E492B4", -- Soft coral pink
 }
-
--- This can add new colors to the palette
--- or override existing ones
-M.setup = function(opts)
-  local new = opts.colors or {}
-  for k, v in pairs(new) do
-    M[k] = v
-  end
-end
 
 return M

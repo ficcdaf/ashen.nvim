@@ -24,31 +24,43 @@ M.opts = {
   transparent = false,
   -- force clear other highlights
   force_hi_clear = false,
-  -- enable termguicolors on load
-  termguicolors = true,
+  -- set terminal to Ashen ANSI palette
+  -- respects colors set above
+  -- allows override specific ANSI colors
+  terminal = {
+    enabled = true,
+    ---@type AnsiMap
+    colors = {},
+  },
 }
 
 -- Merge user options with defaults
 M.setup = function(opts)
+  local setup = require("ashen.setup")
   M.opts = vim.tbl_deep_extend("force", M.opts, opts or {})
-  require("ashen.colors").setup(M.opts)
-  require("ashen.theme").setup(M.opts)
+  setup.colors(M.opts)
+  setup.theme(M.opts)
+  if M.opts.terminal.enabled then
+    setup.ansi(M.opts)
+  end
 end
 
 -- Load the theme
 M.load = function()
-  local opts = M.opts
   M.lazyvim = pcall(require, "lazyvim")
   if vim.g.colors_name or M.opts.force_hi_clear then
     vim.cmd("hi clear")
   end
   vim.g.colors_name = "ashen"
-  vim.o.termguicolors = opts.termguicolors
+  vim.o.termguicolors = true
   vim.api.nvim_command(string.format("set background=%s", "dark"))
   require("ashen.theme").load()
   require("ashen.plugins").setup()
   require("ashen.autocmds").setup()
   require("ashen.languages").setup()
+  if M.opts.terminal.enabled then
+    require("ashen.ansi").load()
+  end
 end
 
 return M
