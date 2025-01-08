@@ -244,8 +244,6 @@ end
 
 M.load = function()
   for name, spec in pairs(M.map) do
-    -- print("Setting highlight for:", name) -- Debugging statement
-    -- print("Options:", vim.inspect(spec)) -- Debugging statement
     util.hl(name, spec)
   end
 end

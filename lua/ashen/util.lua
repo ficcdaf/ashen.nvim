@@ -6,11 +6,11 @@ local M = {}
 ---@param spec HighlightSpec?
 ---@return HighlightNormalized
 M.normalize_hl = function(spec)
-  if spec == nil or spec == {} then
+  if not spec or spec == {} then
     return {}
   end
   local norm = {}
-  for i = 1, #spec do
+  for i = 1, 3 do
     local element = spec[i]
     if type(element) == "string" then
       if i == 1 and element ~= nil then
@@ -33,6 +33,8 @@ M.normalize_hl = function(spec)
   return norm
 end
 
+AshenList = {}
+
 -- This function sets the highlight groups
 -- via Neovim's API. Return value indicates success.
 ---@param name string
@@ -45,6 +47,7 @@ M.hl = function(name, spec)
   if not M.is_norm(spec) then
     spec = M.normalize_hl(spec)
   end
+
   -- check if transparency is enabled
   -- this is too costly to do on each hl, though
   if require("ashen.theme").transparent_bg[name] then
