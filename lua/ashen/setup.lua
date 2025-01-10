@@ -21,7 +21,11 @@ M.theme = function(opts)
     end
   end
   for k, v in pairs(opts.hl.merge_override or {}) do
-    theme.map[k] = vim.tbl_deep_extend("force", theme.map[k], v)
+    if theme.map[k] == nil then
+      theme.map[k] = v
+    else
+      theme.map[k] = vim.tbl_deep_extend("force", theme.map[k], v)
+    end
   end
   for k, v in pairs(opts.hl.force_override or {}) do
     theme.map[k] = v
