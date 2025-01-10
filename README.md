@@ -9,9 +9,11 @@ hints of teal.
 
 ![Lua, Python, and Go code in the Ashen theme.](assets/preview.png "Lua, Python, and Go code in the Ashen theme.")
 
+<!-- prettier-ignore-start -->
 > [!WARNING]
 > This theme is still in early development: the palette and theming
 > may be subject to change.
+<!-- prettier-ignore-end -->
 
 ## Contents
 
@@ -99,10 +101,12 @@ see [Plugin Configuration](#plugin-configuration) for more details.
 
 ## Configuration
 
+<!-- prettier-ignore-start -->
 > [!WARNING]
 > If you choose to set any options, please note that `setup` _only_
 > sets up the configuration and does **not** load the theme! You must call
 > `colorscheme ashen` or `require("ashen").load()` _after_ `setup`!
+<!-- prettier-ignore-end -->
 
 You can pass an options table to the `setup` function to configure Ashen, the
 same you would any other plugin. If you use `lazy.nvim`, you can set options as
@@ -119,9 +123,11 @@ vim.cmd("colorscheme ashen")
 The default settings will work for most people. However, extensive configuration
 options are provided.
 
+<!-- prettier-ignore-start -->
 > [!TIP]
 > If you are not changing any of the defaults, avoid calling `setup` or
 > setting any `opts` -- your startup time will be faster!
+<!-- prettier-ignore-end -->
 
 <details>
   <summary>Available Settings</summary>
@@ -184,9 +190,11 @@ Please see the following example:
 }
 ```
 
+<!-- prettier-ignore-start -->
 > [!TIP]
 > Made a palette you're proud of? It could become Ashen's next "theme
 > variant" -- don't be afraid to open a feature request for it!
+<!-- prettier-ignore-end -->
 
 ### Highlight Override
 
@@ -403,8 +411,7 @@ opts = {
 
 ## Extras
 
-Extras can be found [here](./extras/). You can install them like you would any
-other theme in the respective application.
+Extras can be found [here](./extras/). Installation instructions can be found
 
 The following extras are available:
 
@@ -414,6 +421,7 @@ The following extras are available:
 - Windows Terminal
 - bat
 - eza
+- lazygit
 
 ## Acknowledgements
 
