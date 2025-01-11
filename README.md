@@ -419,6 +419,7 @@ The following extras are available:
 - Kitty
 - Alacritty
 - Windows Terminal
+- WezTerm
 - bat
 - eza
 - lazygit
