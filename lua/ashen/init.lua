@@ -5,8 +5,8 @@ local M = {}
 -- have to track whether the user is running it
 M.lazyvim = false
 
--- default settings
---- @class Options table
+---Settings configuration.
+---@class Options table
 M.opts = {
   -- override palette
   ---@type Palette
@@ -32,6 +32,15 @@ M.opts = {
     ---@type AnsiMap
     colors = {},
   },
+  -- configure plugin integrations
+  plugins = {
+    -- automatically load plugin integrations
+    autoload = true,
+    ---if autoload: plugins to SKIP
+    ---if not autoload: plugins to LOAD
+    ---@type string[]
+    override = {},
+  },
 }
 
 -- Merge user options with defaults
@@ -55,7 +64,7 @@ M.load = function()
   vim.o.termguicolors = true
   vim.api.nvim_command(string.format("set background=%s", "dark"))
   require("ashen.theme").load()
-  require("ashen.plugins").setup()
+  require("ashen.plugins").load()
   require("ashen.autocmds").setup()
   require("ashen.languages").setup()
   if M.opts.terminal.enabled then

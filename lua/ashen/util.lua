@@ -33,8 +33,6 @@ M.normalize_hl = function(spec)
   return norm
 end
 
-AshenList = {}
-
 -- This function sets the highlight groups
 -- via Neovim's API. Return value indicates success.
 ---@param name string
@@ -110,6 +108,65 @@ function M.is_norm(spec)
     end
   end
   return true
+end
+
+---@param file string
+---@return string
+M.strip_extension = function(file)
+  return file:match("(.+)%..+$")
+end
+
+---Helper function to check if a certain
+---value is present inside a list.
+---@param list any[]
+---@param value any
+---@return boolean
+M.is_in = function(list, value)
+  for _, v in ipairs(list) do
+    if v == value then
+      return true
+    end
+  end
+  return false
+end
+
+---@param map HighlightMap
+---@param opts Options
+M.map_override = function(map, opts)
+  if not map then
+    return
+  end
+  if opts.hl.merge_override and opts.hl.merge_override ~= {} then
+    for k, v in pairs(opts.hl.merge_override or {}) do
+      if map[k] == nil then
+        map[k] = v
+      else
+        map[k] = vim.tbl_deep_extend("force", map[k], v)
+      end
+    end
+  end
+  if opts.hl.force_override and opts.hl.force_override ~= {} then
+    for k, v in pairs(opts.hl.force_override or {}) do
+      map[k] = v
+    end
+  end
+end
+
+---Utility function merges any number of lists
+---skipping duplicate values.
+---@param ... any[]
+M.list_merge = function(...)
+  local seen = {}
+  local merged = {}
+  for _, list in ipairs({ ... }) do
+    for _, value in ipairs(list) do
+      if not seen[value] then
+        table.insert(merged, value)
+        seen[value] = true
+      end
+    end
+  end
+  return merged
 end
 
 return M

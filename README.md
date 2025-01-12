@@ -129,14 +129,14 @@ options are provided.
 > setting any `opts` -- your startup time will be faster!
 <!-- prettier-ignore-end -->
 
+All available settings, along with their default values, are listed below. User
+provided settings will be merged with the defaults.
+
 <details>
   <summary>Available Settings</summary>
 
-All available settings, along with their default values, are listed below. User
-provided settings will be merged with the defaults. Explanations are provided in
-later sections for more settings.
-
 ```Lua
+-- default settings
 {
   --- override palette colors
   ---@type Palette
@@ -166,12 +166,24 @@ later sections for more settings.
     ---@type AnsiMap
     colors = {},
   },
+  -- configure plugin integrations
+  plugins = {
+    -- automatically load plugin integrations
+    autoload = true,
+    ---if autoload: plugins to SKIP
+    ---if not autoload: plugins to LOAD
+    ---@type string[]
+    override = {},
+  },
 }
 ```
 
 </details>
 
 ### Palette Override
+
+<details>
+<summary>Click to expand</summary>
 
 You can override any color in Ashen's palette, or set new colors entirely. The
 `colors` setting accepts a table of `ColorName = HexCode` pairs, where they are
@@ -190,6 +202,8 @@ Please see the following example:
 }
 ```
 
+</details>
+
 <!-- prettier-ignore-start -->
 > [!TIP]
 > Made a palette you're proud of? It could become Ashen's next "theme
@@ -197,6 +211,11 @@ Please see the following example:
 <!-- prettier-ignore-end -->
 
 ### Highlight Override
+
+<details>
+<summary>Click to expand</summary>
+
+You can find a detailed explanation of the HighlightMap type below.
 
 <details>
 <summary>Explanation of HighlightMap type</summary>
@@ -239,7 +258,7 @@ entirely. There are two options under the `hl` setting: `force_override` and
 `merge_override`.
 
 The former will _completely_ overwrite the given highlight group; existing
-properties are **not** preserved. An empty table `{}` means Ashen will not touch
+properties are **not** preserved. An empty table `{}` means Ashen will _clear_
 that highlight group.
 
 The latter will _merge_ properties: it will override _only_ the properties you
@@ -261,7 +280,12 @@ hl = {
 },
 ```
 
+</details>
+
 ### Terminal Palette
+
+<details>
+<summary>Click to expand</summary>
 
 The following explanation of the terminal palette applies to both the Neovim
 terminal and some [extra](#extras) themes.
@@ -332,9 +356,78 @@ terminal = {
 }
 ```
 
+</details>
+
+### Plugin Integration Settings
+
+<details>
+<summary>Click to expand</summary>
+
+Plugin integration settings can be set under the `opts.plugins` table:
+
+```Lua
+{
+  plugins = {
+    autoload = true,
+    ---@type string[]
+    override = {},
+  },
+}
+```
+
+#### Autoload
+
+By default, plugin integrations are automatically loaded. To disable this
+behaviour, you can set `plugins.autoload` to `false`.
+
+<details>
+<summary>Exceptions</summary>
+  
+  - `trailblazer` needs to be loaded manually even if `plugins.autoload == true`.
+
+</details>
+
+#### Manual Loading
+
+You can manually load any plugin integration on-demand in your Neovim config by
+using the `load_plugin` function. The same naming rules apply as for
+`plugins.override`, please see below for more details.
+
+```Lua
+-- example
+require("ashen.plugins").load_plugin("flash")
+```
+
+#### Override
+
+You can provide a list of plugin names as an "override". The names must match
+the filenames in [lua/ashen/plugins](./lua/ashen/plugins/), with the `.lua`
+extension removed, and exclude `init.lua`.
+
+For example:
+
+```Lua
+{
+  -- flash.nvim
+  "flash",
+  -- mini.icons
+  "mini-icons",
+}
+```
+
+Overriding behaves differently depending on whether autoloading is enabled. If
+`plugins.autoload` is set, the overridden plugins will **not** be loaded
+automatically. If autoloading is disabled, the overridden plugins **will** be
+loaded automatically.
+
+</details>
+
 ## Plugin Configuration
 
 ### Lualine
+
+<details>
+<summary>Click to expand</summary>
 
 Ashen comes with a preconfigured Lualine theme that includes a word counter for
 Markdown, Text, and Latex files. Optionally,
@@ -363,7 +456,12 @@ return {
 > I am working on improving the word counter and releasing it as a separate
 > plugin. When that happens, Ashen will be updated to support it out of the box.
 
+</details>
+
 ### Trailblazer.nvim
+
+<details>
+<summary>Click to expand</summary>
 
 Trailblazer tends to overwrite the highlight groups set by Ashen. Therefore, you
 may need to invoke Ashen's Trailblazer setup immediately _after_ loading
@@ -383,12 +481,17 @@ return {
     })
     -- This ensures Ashen's HL groups are set up
     -- AFTER Trailblazer sets its own.
-    require("ashen.plugins").setup("trailblazer")
+    require("ashen.plugins").load_plugin("flash")
   end,
 }
 ```
 
+</details>
+
 ### Render-markdown.nvim
+
+<details>
+<summary>Click to expand</summary>
 
 Ashen will support `render-markdown` OOTB with no additional configuration. You
 may optionally consider including the following icons in your setup. Note they
@@ -408,6 +511,8 @@ opts = {
 
 }
 ```
+
+</details>
 
 ## Extras
 
