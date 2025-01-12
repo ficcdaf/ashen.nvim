@@ -1,0 +1,106 @@
+local M = {}
+local c = require("ashen.colors")
+
+M.map = {
+  -- Status Buffer
+  NeogitBranch = { c.orange_glow },
+  NeogitBranchHead = { c.orange_glow },
+  NeogitRemote = { c.orange_blaze },
+  NeogitObjectId = { c.red_ember },
+  NeogitStash = { c.g_2 },
+  NeogitTagName = { c.blue },
+  NeogitTagDistance = { c.blue },
+  NeogitStatusHEAD = { c.red_glowing },
+  NeogitFold = { c.g_1 },
+  NeogitRebaseDone = { c.orange_glow },
+  -- Section Headers
+  NeogitSectionHeader = { c.red_glowing },
+  NeogitSectionHeaderCount = { c.blue },
+  -- Status Buffer File
+  NeogitChangeAdded = { c.green_light },
+  NeogitChangeModified = { c.orange_golden },
+  NeogitChangeDeleted = { c.red_flame },
+  NeogitChangeRenamed = { c.orange_blaze },
+  NeogitChangeUpdated = { c.green },
+  NeogitChangeCopied = { c.blue },
+  NeogitChangeNewFile = { c.green_light },
+  NeogitChangeUnmerged = { c.red_glowing },
+  -- Signs line highlighting
+  NeogitHunkHeader = { c.red_glowing },
+  NeogitDiffContext = { c.g_3 },
+  NeogitDiffAdd = { c.green_light },
+  NeogitDiffDelete = { c.red_flame },
+  NeogitDiffHeader = { c.red_glowing },
+  NeogitActiveItem = { c.orange_blaze },
+  -- Signs for line highlighting current context
+  NeogitHunkHeaderHighlight = { c.orange_blaze },
+  NeogitDiffContextHighlight = { c.g_3 },
+  NeogitDiffAddHighlight = { c.green_light },
+  NeogitDiffDeleteHighlight = { c.red_flame },
+  NeogitDiffHeaderHighlight = { c.blue },
+  -- Same as above, but when cursor is on the line
+  NeogitHunkHeaderCursor = { c.orange_blaze, { bold = true } },
+  NeogitDiffContextCursor = { bold = true },
+  NeogitDiffAddCursor = { c.green_light, { bold = true } },
+  NeogitDiffDeleteCursor = { c.red_flame, { bold = true } },
+  NeogitDiffHeaderCursor = { { bold = true } },
+  -- Commit Buffer
+  NeogitFilePath = { c.blue },
+  NeogitCommitViewHeader = { c.red_glowing },
+  -- Log View Buffer
+  NeogitGraphAuthor = { c.orange_blaze },
+  -- ngl I have no idea what to do for these so leaving them unset for now
+  NeogitGraphBlack = {},
+  NeogitGraphBlackBold = {},
+  NeogitGraphRed = {},
+  NeogitGraphRedBold = {},
+  NeogitGraphGreen = {},
+  NeogitGraphGreenBold = {},
+  NeogitGraphYellow = {},
+  NeogitGraphYellowBold = {},
+  NeogitGraphBlue = {},
+  NeogitGraphBlueBold = {},
+  NeogitGraphPurple = {},
+  NeogitGraphPurpleBold = {},
+  NeogitGraphCyan = {},
+  NeogitGraphCyanBold = {},
+  NeogitGraphWhite = {},
+  NeogitGraphWhiteBold = {},
+  NeogitGraphGray = {},
+  NeogitGraphBoldGray = {},
+  NeogitGraphOrange = {},
+  -- Signature Highlighting
+  NeogitSignatureGood = { c.green_light },
+  NeogitSignatureBad = { c.red_flame },
+  NeogitSignatureMissing = { c.red_ember },
+  NeogitSignatureNone = { c.g_3 },
+  NeogitSignatureGoodUnknown = { c.green },
+  NeogitSignatureGoodExpired = { c.orange_golden },
+  NeogitSignatureGoodExpiredKey = { c.orange_golden },
+  NeogitSignatureGoodRevokedKey = { c.orange_golden },
+  -- Popups
+  NeogitPopupSectionTitle = { c.red_glowing },
+  NeogitPopupBranchName = { c.orange_golden },
+  NeogitPopupBold = { c.orange_glow },
+  NeogitPopupSwitchKey = { c.orange_glow },
+  NeogitPopupSwitchEnabled = { c.orange_glow },
+  NeogitPopupSwitchDisabled = { c.g_6 },
+  NeogitPopupOptionKey = { c.red_ember },
+  NeogitPopupOptionEnabled = { c.red_ember },
+  NeogitPopupOptionDisabled = { c.g_6 },
+  NeogitPopupConfigKey = { c.blue },
+  NeogitPopupConfigEnabled = { c.blue },
+  NeogitPopupConfigDisabled = { c.g_6 },
+  NeogitPopupActionKey = { c.orange_golden },
+  NeogitPopupActionDisabled = { c.g_6 },
+  -- Command history
+  NeogitCommandText = { c.g_2 },
+  NeogitCommandTime = { c.blue },
+  NeogitCommandCodeNormal = { c.green_light },
+  NeogitCommandCodeError = { c.red_flame },
+  -- Commit select
+  NeogitFloatHeader = { c.red_glowing },
+  NeogitFloatHeaderHighlight = { c.red_glowing, { bold = true } },
+}
+
+return M

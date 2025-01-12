@@ -30,6 +30,7 @@ local M = {
   blue = "#4A8B8B", -- Muted teal, soft and unobtrusive
   blue_dark = "#3A6E6E", -- Dark teal, ideal for subtle backgrounds
   -- strong contender: #629C7D
+  green_light = "#629C7D",
   green = "#1E6F54",
 
   -- standard grayscale palette
