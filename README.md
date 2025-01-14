@@ -517,15 +517,26 @@ opts = {
 
 ## Extras
 
-Extras can be found [here](./extras/). Installation instructions can be found
+Extras can be found [here](./extras/). Installation instructions can be found in
+their respective folders.
 
-The following extras are available:
+<!-- prettier-ignore-start -->
+> [!TIP] 
+> Missing an extra? Open an issue and request it, or try porting it
+> yourself!
+<!-- prettier-ignore-end -->
+
+### Terminal Emulators
 
 - Ghostty
 - Kitty
 - Alacritty
 - Windows Terminal
 - WezTerm
+- foot
+
+### CLI Tools
+
 - bat
 - eza
 - lazygit
