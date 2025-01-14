@@ -98,6 +98,7 @@ see [Plugin Configuration](#plugin-configuration) for more details.
 | render-markdown.nvim |                        |
 | telescope.nvim       |                        |
 | minimap.vim          |                        |
+| neogit               |                        |
 
 ## Configuration
 
