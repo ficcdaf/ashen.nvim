@@ -96,7 +96,7 @@ end
 ---@param targ HighlightName
 ---@param force boolean?
 M.link = function(inp, targ, force)
-  local ln = require("ashen.config").opts.hl.link
+  local ln = require("ashen.state").opts.hl.link
   if force or ln[inp] == nil then
     vim.api.nvim_set_hl(0, inp, { link = targ })
   end
@@ -140,7 +140,7 @@ end
 
 ---Overrides the palette according to user opts
 M.palette_override = function()
-  local opts = require("ashen.config").opts
+  local opts = require("ashen.state").opts
   if opts.colors == {} or not opts.colors then
     return
   end

@@ -7,14 +7,14 @@ M.lazyvim = false
 
 -- Merge user options with defaults
 M.setup = function(opts)
-  local config = require("ashen.config")
-  config.opts = vim.tbl_deep_extend("force", config.opts, opts or {})
+  local state = require("ashen.state")
+  state.opts = vim.tbl_deep_extend("force", state.opts, opts or {})
 end
 
 -- Load the theme
 M.load = function()
-  local config = require("ashen.config")
-  local opts = config.opts
+  local state = require("ashen.state")
+  local opts = state.opts
   -- this is kinda cringe since it requires
   -- lazyvim to be loaded before ashen, but
   -- I can't think of a better way to do this :/

@@ -43,7 +43,7 @@ M.colors = nil
 
 ---@return string[]
 local generate_colors = function()
-  local opts = require("ashen.config").opts
+  local opts = require("ashen.state").opts
   local colors = {}
   local override = {}
   if opts ~= nil and opts.terminal ~= nil then
@@ -63,7 +63,7 @@ local generate_colors = function()
 end
 
 M.load = function()
-  local opts = require("ashen.config").opts
+  local opts = require("ashen.state").opts
   if opts.terminal.enabled then
     M.colors = generate_colors()
     for i, color in ipairs(M.colors) do

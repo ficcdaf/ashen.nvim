@@ -229,8 +229,7 @@ M.transparent_bg = {
 
 M.load = function()
   local util = require("ashen.util")
-  local config = require("ashen.config")
-  local opts = require("ashen.config").opts
+  local opts = require("ashen.state").opts
   vim.api.nvim_command(string.format("set background=%s", "dark"))
   if opts.transparent then
     for _, name in ipairs(M.transparent_bg) do
@@ -248,7 +247,7 @@ M.load = function()
     util.link(from, to)
   end
   -- set user links
-  for from, to in pairs(config.opts.hl.link) do
+  for from, to in pairs(opts.hl.link) do
     util.link(from, to, true)
   end
 end
