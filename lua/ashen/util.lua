@@ -39,7 +39,8 @@ end
 ---@param spec HighlightSpec|HighlightNormalized?
 ---@return boolean
 M.hl = function(name, spec)
-  if spec == {} or spec == nil then
+  local theme = require("ashen.theme")
+  if spec == {} or spec == nil or theme.link[name] ~= nil then
     return false
   end
   if not M.is_norm(spec) then
@@ -90,8 +91,15 @@ function M.link_lang(table, lang)
   end
 end
 
-M.link = function(inp, targ)
-  vim.api.nvim_set_hl(0, inp, { link = targ })
+---Link input to target
+---@param inp HighlightName
+---@param targ HighlightName
+---@param force boolean?
+M.link = function(inp, targ, force)
+  local ln = require("ashen").opts.hl.link
+  if force or ln[inp] == nil then
+    vim.api.nvim_set_hl(0, inp, { link = targ })
+  end
 end
 
 ---Function checks whether a given spec

@@ -19,6 +19,10 @@ M.opts = {
     ---Merge fields with defaults
     ---@type HighlightMap
     merge_override = {},
+    ---Link Highlight1 -> Highlight2
+    ---Overrides all default links
+    ---@type table<HighlightName, HighlightName>
+    link = {},
   },
   -- use transparent background
   transparent = false,

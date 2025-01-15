@@ -10,6 +10,8 @@ local c = require("ashen.colors")
 ---@alias HighlightName string # The name of a Neovim highlight group.
 ---@alias HighlightMap table<HighlightName, HighlightSpec>
 
+---@alias HighlightLink table<HighlightName, HighlightName> # Links first group to second group
+
 ---@type HighlightMap
 M.map = {
   AshenReverse = { c.g_0, c.red_ember },
@@ -217,6 +219,8 @@ M.map = {
   String = { c.red_glowing, nil },
 }
 
+M.link = {}
+
 ---@type string[]
 M.transparent_bg = {
   "Normal",
@@ -225,8 +229,15 @@ M.transparent_bg = {
 }
 
 M.load = function()
+  local opts = require("ashen").opts
   for name, spec in pairs(M.map) do
     util.hl(name, spec)
+  end
+  for from, to in pairs(M.link) do
+    util.link(from, to)
+  end
+  for from, to in pairs(opts.hl.link) do
+    util.link(from, to, true)
   end
 end
 
