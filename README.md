@@ -151,6 +151,10 @@ provided settings will be merged with the defaults.
     ---Merge fields with defaults
     ---@type HighlightMap
     merge_override = {},
+    ---Link Highlight1 -> Highlight2
+    ---Overrides all default links
+    ---@type table<HighlightName, HighlightName>
+    link = {},
   },
   -- use transparent background
   -- (requires terminal support)
@@ -265,6 +269,10 @@ that highlight group.
 The latter will _merge_ properties: it will override _only_ the properties you
 specify, and keep non-conflicting Ashen defaults.
 
+You can also _link_ arbitrary highlight groups. Links defined in `hl.link` take
+priority over all other links set by Ashen. `hl.link` must be a key-value table
+in which the key is the link's _origin_ and the value is its _target_.
+
 ```Lua
 -- full example
 hl = {
@@ -277,6 +285,11 @@ hl = {
   ---@type HighlightMap
   merge_override = {
     ["@function.macro"] = { "#B14242" },
+  },
+  ---@type table<HighlightName, HighlightName>
+  link = {
+    -- link FlashBackdrop to Normal
+    FlashBackdrop = "Normal",
   },
 },
 ```
