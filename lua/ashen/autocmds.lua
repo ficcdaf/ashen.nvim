@@ -7,7 +7,7 @@ end
 
 M.lazy_cleared = false
 
-M.setup = function()
+M.load = function()
   local cmds = {
     highlight_yank = function()
       local opt = { higroup = "AshenYank", timeout = 100 }

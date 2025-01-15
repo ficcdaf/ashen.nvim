@@ -1,4 +1,5 @@
 local M = {}
+
 local palette = {
   "background",
   "red_ember",
@@ -41,8 +42,8 @@ local palette = {
 M.colors = nil
 
 ---@return string[]
----@param opts Options?
-M.generate_colors = function(opts)
+local generate_colors = function()
+  local opts = require("ashen.config").opts
   local colors = {}
   local override = {}
   if opts ~= nil and opts.terminal ~= nil then
@@ -62,11 +63,12 @@ M.generate_colors = function(opts)
 end
 
 M.load = function()
-  if M.colors == nil then
-    M.colors = M.generate_colors()
-  end
-  for i, color in ipairs(M.colors) do
-    vim.g["terminal_color_" .. i - 1] = color
+  local opts = require("ashen.config").opts
+  if opts.terminal.enabled then
+    M.colors = generate_colors()
+    for i, color in ipairs(M.colors) do
+      vim.g["terminal_color_" .. i - 1] = color
+    end
   end
 end
 

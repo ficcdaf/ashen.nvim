@@ -47,7 +47,7 @@ end
 ---is a list of valid plugin names.
 ---@return boolean
 local function validate_override()
-  local opts = require("ashen").opts
+  local opts = require("ashen.config").opts
   for _, plugin in ipairs(opts.plugins.override) do
     if not util.is_in(M.get_valid_plugins(), plugin) then
       vim.notify("Ashen: " .. plugin .. " is not valid, ignoring override settings...", vim.log.levels.ERROR)
@@ -87,7 +87,7 @@ end
 ---Accepts a plugin name, or a plugin integration spec.
 ---@param plugin string|table
 M.load_plugin = function(plugin)
-  local opts = require("ashen").opts
+  local opts = require("ashen.config").opts
   local module
   if type(plugin) == "string" then
     if not util.is_in(M.get_valid_plugins(), plugin) then
@@ -115,7 +115,7 @@ end
 
 ---Load plugin integrations
 M.load = function()
-  local p = require("ashen").opts.plugins
+  local p = require("ashen.config").opts.plugins
   local plugins = {}
   if p.autoload then
     if #p.override > 0 and validate_override() then

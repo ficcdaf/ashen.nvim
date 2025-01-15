@@ -1,6 +1,5 @@
 local M = {}
 
-local util = require("ashen.util")
 local c = require("ashen.colors")
 
 ---@alias HighlightSpec [HexCode?, HexCode?, Style?] # Defines a highlight group.
@@ -229,14 +228,27 @@ M.transparent_bg = {
 }
 
 M.load = function()
-  local opts = require("ashen").opts
+  local util = require("ashen.util")
+  local config = require("ashen.config")
+  local opts = require("ashen.config").opts
+  vim.api.nvim_command(string.format("set background=%s", "dark"))
+  if opts.transparent then
+    for _, name in ipairs(M.transparent_bg) do
+      M.map[name] = util.remove_bg(M.map[name])
+    end
+  end
+  util.map_override(M.map, opts)
+
+  -- set theme highlights
   for name, spec in pairs(M.map) do
     util.hl(name, spec)
   end
+  -- set theme links
   for from, to in pairs(M.link) do
     util.link(from, to)
   end
-  for from, to in pairs(opts.hl.link) do
+  -- set user links
+  for from, to in pairs(config.opts.hl.link) do
     util.link(from, to, true)
   end
 end

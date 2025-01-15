@@ -96,7 +96,7 @@ end
 ---@param targ HighlightName
 ---@param force boolean?
 M.link = function(inp, targ, force)
-  local ln = require("ashen").opts.hl.link
+  local ln = require("ashen.config").opts.hl.link
   if force or ln[inp] == nil then
     vim.api.nvim_set_hl(0, inp, { link = targ })
   end
@@ -138,12 +138,27 @@ M.is_in = function(list, value)
   return false
 end
 
+---Overrides the palette according to user opts
+M.palette_override = function()
+  local opts = require("ashen.config").opts
+  if opts.colors == {} or not opts.colors then
+    return
+  end
+  local palette = require("ashen.colors")
+  local override = opts.colors or {}
+  for k, v in pairs(override) do
+    palette[k] = v
+  end
+end
+
 ---@param map HighlightMap
 ---@param opts Options
 M.map_override = function(map, opts)
   if not map then
     return
   end
+  -- TODO: Let users provide palette color names instead of Hex codes
+  -- and check for it automatically
   if opts.hl.merge_override and opts.hl.merge_override ~= {} then
     for k, v in pairs(opts.hl.merge_override or {}) do
       if map[k] == nil then

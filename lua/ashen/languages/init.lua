@@ -28,7 +28,7 @@ local function setup_language(lang)
   end
 end
 
-M.setup = function()
+M.load = function()
   local languages = get_languages(default_languages)
 
   for _, lang in ipairs(languages) do
