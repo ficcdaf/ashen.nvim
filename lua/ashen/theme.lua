@@ -35,7 +35,6 @@ M.map = {
   AshenGreen = { c.green },
 
   AshenBackground = { c.background },
-  AshenG0 = { c.g_0 },
   AshenG1 = { c.g_1 },
   AshenG2 = { c.g_2 },
   AshenG3 = { c.g_3 },
@@ -63,14 +62,14 @@ M.map = {
   EndOfBuffer = { c.g_8, nil },
 
   Character = { c.g_5, nil },
-  Identifier = { c.g_0, nil },
+  Identifier = { c.g_1, nil },
   Statement = { c.g_1, nil },
   PreProc = { c.red_ember, nil },
   Type = { c.orange_blaze, nil },
   Special = { c.g_5, nil },
   Error = { c.red_flame, nil },
   Todo = { c.red_ember, c.g_8 },
-  Function = { c.g_0, nil },
+  Function = { c.g_1, nil },
 
   ColorColumn = { nil, c.g_8 },
   Conceal = { c.g_7, nil },
@@ -80,9 +79,9 @@ M.map = {
   CursorLineNr = { c.g_6, c.g_9 },
   Directory = { c.g_3, nil },
   DiffAdd = { c.red_ember, c.g_8 },
-  DiffChange = { c.g_0, c.g_6 },
+  DiffChange = { c.g_1, c.g_6 },
   DiffDelete = { c.red_kindling, c.g_8 },
-  DiffText = { c.g_0, c.g_7 },
+  DiffText = { c.g_1, c.g_7 },
   VertSplit = { c.g_8, c.g_9 },
   WinSeparator = { c.g_8, c.g_9 },
 
@@ -91,7 +90,7 @@ M.map = {
   MatchParen = { nil, c.g_7 },
   MoreMsg = { nil, c.g_6 },
   Pmenu = { c.g_2, c.g_8 },
-  PmenuSel = { c.g_0, c.g_7 },
+  PmenuSel = { c.g_1, c.g_7 },
   PmenuSbar = { nil, c.g_8 },
   PmenuThumb = { nil, c.g_7 },
   Question = { c.g_1, c.g_8 },
@@ -107,7 +106,7 @@ M.map = {
   WildMenu = { c.g_5, c.g_8 },
 
   FloatBorder = { c.g_7, nil },
-  FloatTitle = { c.g_0, nil },
+  FloatTitle = { c.g_1, nil },
   NormalFloat = { c.g_3, nil },
   -- TODO: Create `noice` plugin table instead?
   NoicePopup = { c.g_3, c.g_11 },
@@ -167,7 +166,7 @@ M.map = {
   ["@text.underline"] = { c.g_2, nil },
   ["@text.uri"] = { c.g_2, nil },
   ["@type"] = { c.g_2, nil },
-  ["@identifier"] = { c.g_0, nil },
+  ["@identifier"] = { c.g_1, nil },
   ["@variable.builtin"] = { c.blue, nil },
   ["@type.definition"] = { c.g_2, nil },
   ["@lsp.type.function"] = { c.g_0, nil },

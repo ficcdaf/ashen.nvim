@@ -2,7 +2,7 @@ local M = {}
 local c = require("ashen.colors")
 
 M.map = {
-  OilDir = { c.g_0 },
+  OilDir = { c.g_1 },
   OilFile = { c.g_4 },
   OilLink = { c.red_ember },
   OilCopy = { c.g_2 },

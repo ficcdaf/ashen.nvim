@@ -4,7 +4,7 @@ M.map = {
 
   TelescopeTitle = { c.g_2 },
   TelescopeResultsNormal = { c.g_5 },
-  TelescopeMatching = { c.g_0 },
+  TelescopeMatching = { c.g_1 },
   TelescopePromptCounter = { c.g_8 },
 }
 

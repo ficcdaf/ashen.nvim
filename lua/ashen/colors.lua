@@ -35,8 +35,10 @@ local M = {
 
   -- standard grayscale palette
   background = "#121212",
-  g_0 = "#fcfcfc",
-  g_1 = "#f5f5f5",
+  -- duplicate for compatibility
+  -- g_0 will be removed in future
+  g_0 = "#e5e5e5",
+  g_1 = "#e5e5e5",
   g_2 = "#d5d5d5",
   g_3 = "#b4b4b4",
   g_4 = "#a7a7a7",
