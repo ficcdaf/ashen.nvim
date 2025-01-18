@@ -78,6 +78,8 @@ end
 
 -- This function sets the highlight groups
 -- via Neovim's API. Return value indicates success.
+-- It normalizes the specs and converts colors names to
+-- hexadecimal values.
 ---@param name string
 ---@param spec HighlightSpec|HighlightNormalized?
 ---@return boolean
