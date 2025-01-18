@@ -38,8 +38,6 @@ M.load = function()
   end
   vim.g.colors_name = "ashen"
   vim.o.termguicolors = true
-  -- palette must be overridden before theme is loaded for the first time
-  -- could this be done in a better way?
   palette_override()
   local theme = require("ashen.theme")
   theme.load()

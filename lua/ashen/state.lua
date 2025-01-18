@@ -3,6 +3,14 @@ local M = {}
 ---Settings configuration.
 ---@class Options table
 M.opts = {
+  -- toggle text style options
+  ---@type table<string, boolean>
+  style = {},
+  -- toggle group specific settings
+  style_presets = {
+    bold_functions = false,
+    italic_comments = false,
+  },
   -- override palette
   ---@type Palette
   colors = {},

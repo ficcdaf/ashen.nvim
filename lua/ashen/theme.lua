@@ -36,6 +36,7 @@ M.map = {
   AshenG11 = { "g_11" },
   AshenG12 = { "g_12" },
   Title = { "red_ember", nil, { bold = true } },
+  -- Normal = { "g_3", "background" },
   Normal = { "g_3", "background" },
   ModeMsg = { "g_4" },
   CurSearch = { "background", "orange_glow", { bold = true } },
@@ -211,6 +212,27 @@ M.transparent_bg = {
   "LineNr",
 }
 
+-- ISSUE: for some reason, the merging only works properly
+-- if the fg is set explicitly... will need to fix this later!
+local style_presets = {
+  functions = {
+    ["Function"] = { fg = "g_3", bold = true },
+    ["@function"] = { fg = "g_3", bold = true },
+    ["@function.builtin"] = { fg = "g_3", bold = true },
+    ["@function.call"] = { fg = "g_3", bold = true },
+    ["@function.macro"] = { fg = "g_3", bold = true },
+    ["@lsp.type.function"] = { fg = "g_3", bold = true },
+    ["@method"] = { fg = "g_3", bold = true },
+    ["@method.call"] = { fg = "g_3", bold = true },
+    ["@method.builtin"] = { fg = "g_3", bold = true },
+    ["@lsp.type.method"] = { fg = "g_3", bold = true },
+  },
+  comments = {
+    ["@comment"] = { fg = "g_6", italic = true },
+    ["Comment"] = { fg = "g_6", italic = true },
+  },
+}
+
 M.load = function()
   local util = require("ashen.util")
   local opts = require("ashen.state").opts
@@ -220,6 +242,13 @@ M.load = function()
       M.map[name] = util.remove_bg(M.map[name])
     end
   end
+  if opts.style_presets.bold_functions then
+    opts.hl.merge_override = vim.tbl_deep_extend("force", opts.hl.merge_override, style_presets.functions)
+  end
+  if opts.style_presets.italic_comments then
+    opts.hl.merge_override = vim.tbl_deep_extend("force", opts.hl.merge_override, style_presets.comments)
+  end
+
   util.map_override(M.map, opts)
 
   -- set theme highlights

@@ -34,7 +34,7 @@ M.normalize_hl = function(spec)
 end
 
 ---Recursively calls "callback" on all
----values in given table.
+---values in given table. Traverses nested tables.
 ---@param tbl table
 ---@param callback fun(k: any, v: any): any
 M.deep_traverse = function(tbl, callback)
@@ -60,16 +60,24 @@ M.is_hex = function(str)
   end
 end
 
----Function traverses highlight specs and converts
----color names into hex codes.
----@param spec HighlightSpec|HighlightNormalized
-M.hexify = function(spec)
+---Function traverses highlight specs and
+---enforces various HL rules.
+---@param spec HighlightNormalized
+M.enforce_hl_rules = function(spec)
   local c = require("ashen.colors")
-  M.deep_traverse(spec, function(_, v)
-    if type(v) == "string" and not M.is_hex(v) then
-      local t = c[v]
-      if type(t) == "string" then
-        return t
+  local opts = require("ashen.state").opts
+  M.deep_traverse(spec, function(k, v)
+    -- check if it's a style parameter set to false
+    -- in user opts
+    local val_type = type(v)
+    if val_type == "boolean" and opts.style[k] == false then
+      return false
+    end
+    -- check if string needs to be converted to hex
+    if val_type == "string" and not M.is_hex(v) then
+      local hex = c[v]
+      if type(hex) == "string" then
+        return hex
       end
     end
     return v
@@ -91,7 +99,9 @@ M.hl = function(name, spec)
   if not M.is_norm(spec) then
     spec = M.normalize_hl(spec)
   end
-  M.hexify(spec)
+  ---spec will always be normalized at this point
+  ---@cast spec HighlightNormalized
+  M.enforce_hl_rules(spec)
 
   -- check if transparency is enabled
   -- this is too costly to do on each hl, though
@@ -184,22 +194,39 @@ M.is_in = function(list, value)
   return false
 end
 
+AshenD = {}
+AshenE = {}
+Norm = {}
+
+local function merge_map(targ, new)
+  for k, v in pairs(new or {}) do
+    if targ[k] == nil then
+      targ[k] = v
+    else
+      AshenD[k] = v
+      -- AshenD[k] = vim.tbl_deep_extend("force", M.normalize_hl(targ[k]), M.normalize_hl(v))
+      if not M.is_norm(v) then
+        v = M.normalize_hl(v)
+      end
+      if not M.is_norm(targ[k]) then
+        targ[k] = M.normalize_hl(targ[k])
+      end
+      -- targ[k] = vim.tbl_deep_extend("force", targ[k], v)
+      local temp = vim.tbl_deep_extend("force", targ[k], v)
+      targ[k] = denormalize(temp)
+      AshenE[k] = targ[k]
+    end
+  end
+end
+
 ---@param map HighlightMap
 ---@param opts Options
 M.map_override = function(map, opts)
   if not map then
     return
   end
-  -- TODO: Let users provide palette color names instead of Hex codes
-  -- and check for it automatically
   if opts.hl.merge_override and opts.hl.merge_override ~= {} then
-    for k, v in pairs(opts.hl.merge_override or {}) do
-      if map[k] == nil then
-        map[k] = v
-      else
-        map[k] = vim.tbl_deep_extend("force", map[k], v)
-      end
-    end
+    merge_map(map, opts.hl.merge_override)
   end
   if opts.hl.force_override and opts.hl.force_override ~= {} then
     for k, v in pairs(opts.hl.force_override or {}) do

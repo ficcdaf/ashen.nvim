@@ -141,6 +141,14 @@ provided settings will be merged with the defaults.
 ```Lua
 -- default settings
 {
+  -- toggle text style options
+  ---@type table<StyleName, boolean>
+  style = {},
+  -- toggle group specific settings
+  style_presets = {
+    bold_functions = false,
+    italic_comments = false,
+  },
   --- override palette colors
   ---@type Palette
   ---@field [ColorName] HexCode
@@ -187,6 +195,36 @@ provided settings will be merged with the defaults.
 
 </details>
 
+### Style
+
+You can disable _all_ uses of a certain style with the following setting:
+
+```Lua
+opts = {
+  style = {
+    bold = false,
+    italic = false,
+    -- etc...
+  },
+}
+```
+
+### Style Presets
+
+The following presets are available. They are off by default, and you may choose
+to enable them in your configuration:
+
+```Lua
+opts = {
+  style_presets = {
+    bold_functions = true,
+    italic_comments = true,
+  },
+}
+
+
+```
+
 ### Palette Override
 
 <details>
@@ -201,7 +239,7 @@ names, please see [colors.lua](./lua/ashen/colors.lua).
 Please see the following example:
 
 ```Lua
-{
+opts = {
   colors = {
     background = "#000000",
     red_ember = "#933737"
