@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.6.0](https://github.com/ficcdaf/ashen.nvim/compare/v0.5.0...v0.6.0) (2025-01-19)
+
+
+### Features
+
+* **config:** added styling options ([5f68162](https://github.com/ficcdaf/ashen.nvim/commit/5f68162d0977d8ec1343298d7b718550f3e3ed90))
+* **theme:** allow HighlightSpec colors to be named palette members ([2742d05](https://github.com/ficcdaf/ashen.nvim/commit/2742d050583a9eb3f180e1a67491b5b478f88db3))
+
+
+### Bug Fixes
+
+* **fzflua:** fixed broken selection highlight ([acd7741](https://github.com/ficcdaf/ashen.nvim/commit/acd77411d49b26ea9ebad0e1083a2489a435de8a))
+* **fzf:** tweaked selection highlight ([7dc8c59](https://github.com/ficcdaf/ashen.nvim/commit/7dc8c59958ad4cbbab60c0fbdc236db32b82a7a1))
+* **lazy:** corrected lazy.nvim icons ([578c3ee](https://github.com/ficcdaf/ashen.nvim/commit/578c3ee6e80cd2e36571577fed7a20d86ffc9413))
+
 ## [0.5.0](https://github.com/ficcdaf/ashen.nvim/compare/v0.4.3...v0.5.0) (2025-01-18)
 
 
