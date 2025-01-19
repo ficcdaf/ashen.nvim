@@ -60,6 +60,7 @@ M.is_hex = function(str)
   end
 end
 
+
 ---Function traverses highlight specs and
 ---enforces various HL rules.
 ---@param spec HighlightNormalized
