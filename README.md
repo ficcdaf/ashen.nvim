@@ -619,6 +619,7 @@ their respective folders.
 - bat
 - eza
 - lazygit
+- yazi
 
 ### Environment
 
