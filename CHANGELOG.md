@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.7.0](https://github.com/ficcdaf/ashen.nvim/compare/v0.6.0...v0.7.0) (2025-01-21)
+
+
+### Features
+
+* **extra:** added yazi flavor ([54749d9](https://github.com/ficcdaf/ashen.nvim/commit/54749d9993f2b90dff1d7ea1c4d688ef3b5672c2))
+* **plugins, lang:** added org & orgmode integration ([cb5a121](https://github.com/ficcdaf/ashen.nvim/commit/cb5a1216f9aea592e1fff7433afca329ebddaf18))
+
 ## [0.6.0](https://github.com/ficcdaf/ashen.nvim/compare/v0.5.0...v0.6.0) (2025-01-19)
 
 
