@@ -3,6 +3,8 @@ local M = {}
 ---Settings configuration.
 ---@class Options table
 M.opts = {
+  -- default only option for now
+  variant = "default",
   -- toggle text style options
   ---@type table<string, boolean>
   style = {},
@@ -49,5 +51,7 @@ M.opts = {
     override = {},
   },
 }
+
+M.variant = "default"
 
 return M

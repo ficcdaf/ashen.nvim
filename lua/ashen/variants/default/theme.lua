@@ -191,49 +191,30 @@ M.map = {
   SpellBad = { nil, nil, { undercurl = true } },
   SpellCap = { nil, nil, { undercurl = true } },
   String = { "red_glowing", nil },
+  LazySpecial = { "red_ember" },
 }
 
 M.link = {}
 
----@type string[]
-M.transparent_bg = {
-  "Normal",
-  "SignColumn",
-  "LineNr",
+-- ISSUE: for some reason, the merging only works properly
+-- if the fg is set explicitly... will need to fix this later!
+M.style_presets = {
+  functions = {
+    ["Function"] = { fg = "g_3", bold = true },
+    ["@function"] = { fg = "g_3", bold = true },
+    ["@function.builtin"] = { fg = "g_3", bold = true },
+    ["@function.call"] = { fg = "g_3", bold = true },
+    ["@function.macro"] = { fg = "g_3", bold = true },
+    ["@lsp.type.function"] = { fg = "g_3", bold = true },
+    ["@method"] = { fg = "g_3", bold = true },
+    ["@method.call"] = { fg = "g_3", bold = true },
+    ["@method.builtin"] = { fg = "g_3", bold = true },
+    ["@lsp.type.method"] = { fg = "g_3", bold = true },
+  },
+  comments = {
+    ["@comment"] = { fg = "g_6", italic = true },
+    ["Comment"] = { fg = "g_6", italic = true },
+  },
 }
-
-M.load = function()
-  local util = require("ashen.util")
-  local opts = require("ashen.state").opts
-  local variant = require("ashen.state").variant
-  local theme = require("ashen.variants." .. variant .. ".theme")
-  vim.api.nvim_command(string.format("set background=%s", "dark"))
-  if opts.transparent then
-    for _, name in ipairs(M.transparent_bg) do
-      theme.map[name] = util.remove_bg(theme.map[name])
-    end
-  end
-  if opts.style_presets.bold_functions then
-    opts.hl.merge_override = vim.tbl_deep_extend("force", opts.hl.merge_override, theme.style_presets.functions)
-  end
-  if opts.style_presets.italic_comments then
-    opts.hl.merge_override = vim.tbl_deep_extend("force", opts.hl.merge_override, theme.style_presets.comments)
-  end
-
-  util.map_override(theme.map, opts)
-
-  -- set theme highlights
-  for name, spec in pairs(theme.map) do
-    util.hl(name, spec)
-  end
-  -- set theme links
-  for from, to in pairs(theme.link) do
-    util.link(from, to)
-  end
-  -- set user links
-  for from, to in pairs(opts.hl.link) do
-    util.link(from, to, true)
-  end
-end
 
 return M

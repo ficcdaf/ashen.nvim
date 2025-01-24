@@ -39,9 +39,10 @@ end
 local function get_autoload_plugins()
   local plugins = {}
   local names = M.get_valid_plugins()
+  local variant = require("ashen.state").variant
   for _, name in ipairs(names) do
     if not util.is_in(disabled, name) then
-      table.insert(plugins, require("ashen.plugins." .. name))
+      table.insert(plugins, require("ashen.variants." .. variant .. ".plugins." .. name))
     end
   end
   return plugins
@@ -52,6 +53,17 @@ end
 ---@param plugin string|table
 M.load_plugin = function(plugin)
   require("ashen.submodules").load_submodule(plugin, "plugins")
+end
+
+---Registers `require` loaders in the form `ashen.plugins.plugin_name`
+---pointing to `ashen.variants.variant_name.plugins.plugin_name`
+M.register_loaders = function()
+  for _, plugin in ipairs(M.get_valid_plugins()) do
+    package.preload["ashen.plugins." .. plugin] = function()
+      local variant = require("ashen.state").variant
+      return require("ashen.variants." .. variant .. ".plugins." .. plugin)
+    end
+  end
 end
 
 ---Load plugin integrations
@@ -71,6 +83,7 @@ M.load = function()
   for _, plugin in ipairs(plugins) do
     M.load_plugin(plugin)
   end
+  M.register_loaders()
 end
 
 return M

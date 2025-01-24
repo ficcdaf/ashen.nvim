@@ -1,42 +1,5 @@
 local M = {}
 
-local palette = {
-  "background",
-  "red_ember",
-  "orange_glow",
-  "orange_smolder",
-  "blue",
-  "g_4",
-  "g_3",
-  "g_2",
-  "g_5",
-  "red_ember",
-  "orange_glow",
-  "orange_smolder",
-  "blue",
-  "g_4",
-  "g_3",
-  "g_2",
-}
--- local reference_palette = {
---   "#121212",
---   "#B14242",
---   "#D87C4A",
---   "#E49A44",
---   "#4A8B8B",
---   "#a7a7a7",
---   "#b4b4b4",
---   "#d5d5d5",
---   "#949494",
---   "#B14242",
---   "#D87C4A",
---   "#E49A44",
---   "#4A8B8B",
---   "#a7a7a7",
---   "#b4b4b4",
---   "#d5d5d5",
--- }
-
 ---@alias AnsiMap table<integer, HexCode> -- where integer ∈ [0, 15]
 
 M.colors = nil
@@ -50,6 +13,8 @@ local generate_colors = function()
     override = opts.terminal.colors or {}
   end
   local c = require("ashen.colors")
+  local variant = require("ashen.state").variant
+  local palette = require("ashen.variants." .. variant .. ".ansi")
   for i, name in ipairs(palette) do
     local new = ""
     if override[i - 1] ~= nil then

@@ -10,9 +10,10 @@ local function get_autoload_languages()
   local sub = require("ashen.submodules")
   local languages = {}
   local names = sub.get_valid_integrations("languages")
+  local variant = require("ashen.state").variant
   for _, name in ipairs(names) do
     if not util.is_in(disabled, name) then
-      table.insert(languages, require("ashen.languages." .. name))
+      table.insert(languages, require("ashen.variants." .. variant .. ".languages." .. name))
     end
   end
   return languages

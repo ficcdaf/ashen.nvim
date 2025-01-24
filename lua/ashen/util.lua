@@ -92,7 +92,8 @@ end
 ---@param spec HighlightSpec|HighlightNormalized?
 ---@return boolean
 M.hl = function(name, spec)
-  local theme = require("ashen.theme")
+  local variant = require("ashen.state").variant
+  local theme = require("ashen.variants." .. variant .. ".theme")
   if spec == {} or spec == nil or theme.link[name] ~= nil then
     return false
   end

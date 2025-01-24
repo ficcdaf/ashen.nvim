@@ -7,14 +7,15 @@ local M = {}
 M.get_valid_integrations = function(module)
   -- we get the path of the plugins module file
   local success, result = pcall(function()
-    return debug.getinfo(require("ashen." .. module).load).source:sub(2)
+    local variant = require("ashen.state").variant
+    return debug.getinfo(require("ashen.variants." .. variant .. "." .. module)).source:sub(2)
   end)
 
   local module_path
   if success then
     module_path = result
   else
-    error("Fatal error in ashen.nvim: could not retrieve " .. module .. " path")
+    error("Fatal error in ashen.nvim: could not retrieve " .. module .. " path\n" .. result)
   end
   -- we get its parent directory
   local mod_dir = vim.fn.fnamemodify(module_path, ":h")
@@ -58,13 +59,14 @@ end
 ---@param module string
 M.load_submodule = function(integration, module)
   local opts = require("ashen.state").opts
+  local variant = require("ashen.state").variant
   local submodule
   if type(integration) == "string" then
     if not util.is_in(M.get_valid_integrations(module), integration) then
       vim.notify("Ashen: " .. integration .. " is not a valid integration!", vim.log.levels.ERROR)
       return
     end
-    submodule = require("ashen." .. module .. "." .. integration)
+    submodule = require("ashen.variants." .. variant .. "." .. module .. "." .. integration)
   elseif type(integration) == "table" then
     submodule = integration
   end
