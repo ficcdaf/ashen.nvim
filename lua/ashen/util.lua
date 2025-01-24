@@ -60,7 +60,6 @@ M.is_hex = function(str)
   end
 end
 
-
 ---Function traverses highlight specs and
 ---enforces various HL rules.
 ---@param spec HighlightNormalized
@@ -195,17 +194,11 @@ M.is_in = function(list, value)
   return false
 end
 
-AshenD = {}
-AshenE = {}
-Norm = {}
-
 local function merge_map(targ, new)
   for k, v in pairs(new or {}) do
     if targ[k] == nil then
       targ[k] = v
     else
-      AshenD[k] = v
-      -- AshenD[k] = vim.tbl_deep_extend("force", M.normalize_hl(targ[k]), M.normalize_hl(v))
       if not M.is_norm(v) then
         v = M.normalize_hl(v)
       end
@@ -215,7 +208,6 @@ local function merge_map(targ, new)
       -- targ[k] = vim.tbl_deep_extend("force", targ[k], v)
       local temp = vim.tbl_deep_extend("force", targ[k], v)
       targ[k] = denormalize(temp)
-      AshenE[k] = targ[k]
     end
   end
 end
