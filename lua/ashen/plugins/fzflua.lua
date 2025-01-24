@@ -3,26 +3,24 @@
 ---@field link HighlightLink?
 ---@field exec function?
 
-local c = require("ashen.colors")
-
 ---@type Integration
 local M = {}
 
 M.map = {
-  FzfLuaBackdrop = { nil, c.background },
-  FzfLuaBorder = { c.g_4 },
-  FzfLuaPath = { c.orange_blaze },
-  FzfLuaPathLineNr = { c.blue },
-  FzfLuaHeaderBind = { c.orange_smolder },
-  FzfLuaHeaderText = { c.red_ember },
-  FzfLuaBufNr = { c.blue },
-  FzfLuaTabTitle = { c.orange_glow },
-  FzfLuaTabMarker = { c.orange_glow },
-  FzfLuaPathColNr = { c.blue },
-  FzfLuaBufFlagAlt = { c.blue },
-  FzfLuaFzfPointer = { c.orange_blaze },
-  FzfLuaMatch = { c.orange_blaze },
-  FzfLuaLiveSym = { c.blue },
+  FzfLuaBackdrop = { nil, "background" },
+  FzfLuaBorder = { "g_4" },
+  FzfLuaPath = { "orange_blaze" },
+  FzfLuaPathLineNr = { "blue" },
+  FzfLuaHeaderBind = { "orange_smolder" },
+  FzfLuaHeaderText = { "red_ember" },
+  FzfLuaBufNr = { "blue" },
+  FzfLuaTabTitle = { "orange_glow" },
+  FzfLuaTabMarker = { "orange_glow" },
+  FzfLuaPathColNr = { "blue" },
+  FzfLuaBufFlagAlt = { "blue" },
+  FzfLuaFzfPointer = { "orange_blaze" },
+  FzfLuaMatch = { "orange_blaze" },
+  FzfLuaLiveSym = { "blue" },
 }
 
 M.link = {

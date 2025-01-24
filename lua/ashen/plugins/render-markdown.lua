@@ -1,5 +1,4 @@
 local M = {}
-local c = require("ashen.colors")
 
 -- M.autocmd = {
 --   pattern = "markdown",
@@ -11,22 +10,22 @@ M.link = {
 }
 
 M.map = {
-  RenderMarkdownH1Bg = { c.red_ember, c.g_10 },
-  RenderMarkdownH2Bg = { c.red_ember, c.g_10 },
-  RenderMarkdownH3Bg = { c.red_ember, c.g_10 },
-  RenderMarkdownH4Bg = { c.red_ember, c.g_10 },
-  RenderMarkdownH5Bg = { c.red_ember, c.g_10 },
-  RenderMarkdownH6Bg = { c.red_ember, c.g_10 },
-  RenderMarkdownH1 = { c.red_ember },
-  RenderMarkdownH2 = { c.red_ember },
-  RenderMarkdownH3 = { c.red_ember },
-  RenderMarkdownH4 = { c.red_ember },
-  RenderMarkdownH5 = { c.red_ember },
-  RenderMarkdownH6 = { c.red_ember },
-  RenderMarkdownCode = { nil, c.g_11 },
-  RenderMarkdownCodeInline = { c.g_2, c.g_11 },
-  RenderMarkdownQuote = { c.red_kindling },
-  RenderMarkdownMath = { c.orange_glow },
-  RenderMarkdownTodo = { c.orange_blaze },
+  RenderMarkdownH1Bg = { "red_ember", "g_10" },
+  RenderMarkdownH2Bg = { "red_ember", "g_10" },
+  RenderMarkdownH3Bg = { "red_ember", "g_10" },
+  RenderMarkdownH4Bg = { "red_ember", "g_10" },
+  RenderMarkdownH5Bg = { "red_ember", "g_10" },
+  RenderMarkdownH6Bg = { "red_ember", "g_10" },
+  RenderMarkdownH1 = { "red_ember" },
+  RenderMarkdownH2 = { "red_ember" },
+  RenderMarkdownH3 = { "red_ember" },
+  RenderMarkdownH4 = { "red_ember" },
+  RenderMarkdownH5 = { "red_ember" },
+  RenderMarkdownH6 = { "red_ember" },
+  RenderMarkdownCode = { nil, "g_11" },
+  RenderMarkdownCodeInline = { "g_2", "g_11" },
+  RenderMarkdownQuote = { "red_kindling" },
+  RenderMarkdownMath = { "orange_glow" },
+  RenderMarkdownTodo = { "orange_blaze" },
 }
 return M

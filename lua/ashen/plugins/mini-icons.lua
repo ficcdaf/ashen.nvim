@@ -1,15 +1,14 @@
 local M = {}
-local c = require("ashen.colors")
 
 M.map = {
-  MiniIconsAzure = { c.blue },
-  MiniIconsBlue = { c.blue },
-  MiniIconsCyan = { c.blue },
-  MiniIconsGreen = { c.green },
-  MiniIconsOrange = { c.orange_blaze },
-  MiniIconsPurple = { c.purple },
-  MiniIconsRed = { c.red_ember },
-  MiniIconsYellow = { c.orange_glow },
-  MiniIconsGrey = { c.g_2 },
+  MiniIconsAzure = { "blue" },
+  MiniIconsBlue = { "blue" },
+  MiniIconsCyan = { "blue" },
+  MiniIconsGreen = { "green" },
+  MiniIconsOrange = { "orange_blaze" },
+  MiniIconsPurple = { "purple" },
+  MiniIconsRed = { "red_ember" },
+  MiniIconsYellow = { "orange_glow" },
+  MiniIconsGrey = { "g_2" },
 }
 return M

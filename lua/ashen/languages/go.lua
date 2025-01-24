@@ -1,12 +1,11 @@
 local M = {}
-local c = require("ashen.colors")
 
 M.dot_link = true
 M.name = "go"
 M.lsp_attach = true
 M.map = {
-  ["@lsp.type.type"] = { c.blue },
-  ["@lsp.typemod.variable.readonly.go"] = { c.blue },
+  ["@lsp.type.type"] = { "blue" },
+  ["@lsp.typemod.variable.readonly.go"] = { "blue" },
 }
 M.link = {
 

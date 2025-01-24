@@ -1,15 +1,14 @@
 local M = {}
-local c = require("ashen.colors")
 
 M.map = {
-  OilDir = { c.g_1 },
-  OilFile = { c.g_4 },
-  OilLink = { c.red_ember },
-  OilCopy = { c.g_2 },
-  OilCreate = { c.g_2 },
-  OilChange = { c.orange_blaze },
-  OilMove = { c.orange_blaze },
-  OilDelete = { c.red_flame },
+  OilDir = { "g_1" },
+  OilFile = { "g_4" },
+  OilLink = { "red_ember" },
+  OilCopy = { "g_2" },
+  OilCreate = { "g_2" },
+  OilChange = { "orange_blaze" },
+  OilMove = { "orange_blaze" },
+  OilDelete = { "red_flame" },
 }
 
 return M

@@ -1,14 +1,13 @@
 local M = {}
-local c = require("ashen.colors")
 
 M.map = {
-  ["@markup.link"] = { c.red_ember, nil },
-  ["@markup.link.label"] = { c.red_glowing, nil },
-  ["@markup.link.url"] = { c.red_glowing, nil },
-  ["@markup.list"] = { c.orange_glow, nil },
+  ["@markup.link"] = { "red_ember", nil },
+  ["@markup.link.label"] = { "red_glowing", nil },
+  ["@markup.link.url"] = { "red_glowing", nil },
+  ["@markup.list"] = { "orange_glow", nil },
   ["@markup.quote"] = { italic = true },
   ["@markup.math"] = { bold = true },
-  ["@markup.raw"] = { c.g_4, c.g_10 },
+  ["@markup.raw"] = { "g_4", "g_10" },
 }
 
 return M

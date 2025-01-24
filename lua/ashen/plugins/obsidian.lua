@@ -1,29 +1,17 @@
 local M = {}
-local c = require("ashen.colors")
 
 M.autocmd = {
   pattern = "markdown",
   event = "FileType",
 }
 
-local legacy = {
-  ObsidianRefText = "AshenRedLight",
-  ObsidianRef = "AshenRedLight",
-  ObsidianBullet = "AshenBlue",
-  ObsidianDone = "AshenBlue",
-  ObsidianTodo = "AshenBlue",
-  obsidiantag = "AshenBlue",
-  ObsidianTag = "AshenBlue",
-  ["@markup.list"] = "AshenBlue",
-}
-
 M.map = {
-  ObsidianRefText = { c.red_kindling },
-  ObsidianRef = { c.red_ember },
-  ObsidianBullet = { c.orange_blaze },
-  ObsidianDone = { c.orange_blaze },
-  ObsidianTodo = { c.orange_glow },
-  obsidiantag = { c.blue },
-  ObsidianTag = { c.blue },
+  ObsidianRefText = { "red_kindling" },
+  ObsidianRef = { "red_ember" },
+  ObsidianBullet = { "orange_blaze" },
+  ObsidianDone = { "orange_blaze" },
+  ObsidianTodo = { "orange_glow" },
+  obsidiantag = { "blue" },
+  ObsidianTag = { "blue" },
 }
 return M

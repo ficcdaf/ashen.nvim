@@ -2,19 +2,6 @@ local M = {}
 local c = require("ashen.colors")
 local util = require("ashen.util")
 
----@deprecated
----@param hl HighlightSpec
----@return HighlightSpec
-local function bolder(hl)
-  local out = {
-    hl[1],
-    hl[2],
-    { bold = true },
-  }
-  -- table.insert(hl, -1, { bold = true })
-  return out
-end
-
 ---@param map HighlightMap
 ---@return table<string, HighlightNormalized>
 local function add_inverted(map)

@@ -1,8 +1,7 @@
 local M = {}
-local c = require("ashen.colors")
 
 M.map = {
-  FlashLabel = { c.g_9, c.orange_glow },
+  FlashLabel = { "g_9", "orange_glow" },
 }
 
 M.link = {
