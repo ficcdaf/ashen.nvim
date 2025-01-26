@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.9.0](https://github.com/ficcdaf/ashen.nvim/compare/v0.8.0...v0.9.0) (2025-01-26)
+
+
+### Features
+
+* implemented backend for theme variants ([f5859ee](https://github.com/ficcdaf/ashen.nvim/commit/f5859ee6298b1269df60c2709b546d73a8a69354))
+
 ## [0.8.0](https://github.com/ficcdaf/ashen.nvim/compare/v0.7.0...v0.8.0) (2025-01-26)
 
 
