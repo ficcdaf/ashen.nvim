@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.8.0](https://github.com/ficcdaf/ashen.nvim/compare/v0.7.0...v0.8.0) (2025-01-26)
+
+
+### Features
+
+* **plugin:** added lazy.nvim integration ([35fe806](https://github.com/ficcdaf/ashen.nvim/commit/35fe8068e80f9937b7aea8a2a3f7de4920eb5765))
+* **plugins:** added org-bullets integration ([44f4ea0](https://github.com/ficcdaf/ashen.nvim/commit/44f4ea0114f33697da8539ba35e078a9cafaec43))
+* **plugins:** added which-key integration ([740584b](https://github.com/ficcdaf/ashen.nvim/commit/740584b963e03bf2c583c29b750fac2f43863d65))
+
+
+### Bug Fixes
+
+* **markdown, org:** fixed treesitter highlights for inline verbatim markup ([a2fb230](https://github.com/ficcdaf/ashen.nvim/commit/a2fb230d68bbbf1e6faa86e9daed8eceaef494c9))
+* **markdown, org:** made inline code less harsh ([e157cf4](https://github.com/ficcdaf/ashen.nvim/commit/e157cf46c9609fb880dc16c30ebd1612e248c71b))
+
 ## [0.7.0](https://github.com/ficcdaf/ashen.nvim/compare/v0.6.0...v0.7.0) (2025-01-21)
 
 
