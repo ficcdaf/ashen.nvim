@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.10.0](https://github.com/ficcdaf/ashen.nvim/compare/v0.9.0...v0.10.0) (2025-02-03)
+
+
+### Features
+
+* **extras:** add fzf extra ([2bc0be3](https://github.com/ficcdaf/ashen.nvim/commit/2bc0be3b27a46d94de14b480f4ab77bf1f3a59da))
+* **extras:** added firefox theme ([ff358e2](https://github.com/ficcdaf/ashen.nvim/commit/ff358e27bbbdce5511adbaa36e0eb8796e4388fa))
+
+
+### Bug Fixes
+
+* **fzf:** fzf extra now merges with user's options if set ([9528821](https://github.com/ficcdaf/ashen.nvim/commit/9528821deeb5688e8c3fcd9c4a1a18a3ecb3de91))
+
 ## [0.9.0](https://github.com/ficcdaf/ashen.nvim/compare/v0.8.0...v0.9.0) (2025-01-26)
 
 
