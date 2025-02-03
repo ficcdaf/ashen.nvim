@@ -1,0 +1,18 @@
+return {
+  "background",
+  "red_ember",
+  "orange_glow",
+  "orange_smolder",
+  "blue",
+  "g_4",
+  "g_3",
+  "g_2",
+  "g_5",
+  "red_ember",
+  "orange_glow",
+  "orange_smolder",
+  "blue",
+  "g_4",
+  "g_3",
+  "g_2",
+}

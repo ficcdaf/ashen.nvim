@@ -9,6 +9,7 @@ M.lazyvim = false
 M.setup = function(opts)
   local state = require("ashen.state")
   state.opts = vim.tbl_deep_extend("force", state.opts, opts or {})
+  state.variant = state.opts.variant
 end
 
 ---Overrides the palette according to user opts
