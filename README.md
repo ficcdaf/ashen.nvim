@@ -614,8 +614,7 @@ opts = {
 
 ## Extras
 
-Extras can be found [here](./extras/). Installation instructions can be found in
-their respective folders.
+Ports of Ashen are available for a number of extra software. Links to them are available in the list below. For now, all extras are stored in this repo, but this may change in the future.
 
 <!-- prettier-ignore-start -->
 > [!TIP] 
@@ -623,31 +622,35 @@ their respective folders.
 > yourself!
 <!-- prettier-ignore-end -->
 
+### Text Editors
+
+- [Helix](extras/helix)
+
 ### Terminal Emulators
 
-- Ghostty
-- Kitty
-- Alacritty
-- Windows Terminal
-- WezTerm
-- foot
+- [Ghostty](extras/ghostty)
+- [Kitty](extras/kitty)
+- [Alacritty](extras/alacritty)
+- [Windows Terminal](extras/windows-terminal)
+- [WezTerm](extras/wezterm)
+- [foot](extras/foot)
 
 ### CLI
 
-- bat
-- eza
-- lazygit
-- yazi
-- fzf
+- [bat](extras/bat)
+- [eza](extras/eza)
+- [lazygit](extras/lazygit)
+- [yazi](extras/yazi)
+- [fzf](extras/fzf)
 
 ### Environment
 
-- waybar
-- sway
+- [waybar](extras/waybar)
+- [sway](extras/sway)
 
 ### Web
 
-- Firefox
+- [Firefox](extras/firefox)
 
 ## Acknowledgements
 

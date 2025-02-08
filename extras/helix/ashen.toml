@@ -1,0 +1,160 @@
+## Ashen Theme for Helix
+## Author: Daniel Fichtinger
+## License: MIT
+
+# Syntax highlighting
+# -------------------
+"attribute" = "g_4"
+
+"type" = "blue"
+"type.builtin" = "blue"
+"type.parameter" = "orange_glow"
+"type.enum.variant" = "orange_blaze"
+
+"constructor" = "g_1"
+
+"constant" = "orange_blaze"
+"constant.builtin" = "blue"
+"constant.character" = {fg = "red_glowing", modifiers = ["bold"]}
+"constant.character.escape" = "g_2"
+"constant.numeric" = "blue"
+
+"string" = "red_glowing"
+"string.regexp" = "orange_glow"
+"string.special" = "g_2"
+"string.special.url" = {fg = "red_glowing", modifiers = ["bold"]}
+"string.special.path" = {fg = "red_glowing", modifiers = ["bold"]}
+"string.special.symbol" = "orange_smolder"
+
+"comment" = { fg = "g_6", modifiers = ["italic"] }
+"comment.block.documentation" = { fg = "g_5", modifiers = ["italic"] }
+
+"variable" = "g_3"
+"variable.parameter" = { fg = "g_2", modifiers = ["italic"] }
+"variable.builtin" = "blue"
+"variable.other.member" = {fg = "g_2", modifiers = [""]}
+
+"label" = "red_ember" # used for lifetimes
+
+"punctuation" = "g_2"
+"punctuation.special" = "orange_golden"
+"punctuation.bracket" = "g_6"
+"punctuation.delimiter" = "orange_smolder"
+
+
+"keyword" = "red_ember"
+"keyword.operator" = "orange_blaze"
+"keyword.directive" = {fg = "red_ember", modifiers = ["italic"]}
+"keyword.storage.modifier" = {fg = "red_ember", modifiers = ["italic"]}
+
+"operator" = "orange_glow"
+
+"function" = {fg = "g_3", modifiers = ["bold"]}
+"function.builtin" = {fg = "g_3", modifiers = ["bold", "italic"]}
+"function.macro" = "red_ember"
+
+"tag" = "g_5"
+
+"namespace" = { fg = "orange_blaze", modifiers = ["italic"] }
+
+"special" = "orange_smolder" # fuzzy highlight
+
+"markup.heading" = "red_glowing"
+"markup.list" = "orange_glow"
+"markup.bold" = { modifiers = ["bold"] }
+"markup.italic" = { modifiers = ["italic"] }
+"markup.link.url" = { fg = "red_glowing", modifiers = ["italic", "underlined"] }
+"markup.link.text" = "red_ember"
+"markup.raw" = {fg = "g_4", bg = "g_10"}
+"markup.quote" = {modifiers = ["italic"]}
+
+"diff.plus" = "g_4"
+"diff.minus" = "red_ember"
+"diff.delta" = "orange_smolder"
+
+# User Interface
+# --------------
+"ui.background" = { fg = "text", bg = "background" }
+
+"ui.linenr" = { fg = "g_8" }
+"ui.linenr.selected" = { fg = "g_6" }
+
+"ui.statusline" = { fg = "g_3", bg = "g_9" }
+"ui.statusline.inactive" = { fg = "g_5", bg = "g_10" }
+"ui.statusline.normal" = { fg = "g_3", bg = "g_7", modifiers = ["bold"] }
+"ui.statusline.insert" = { fg = "background", bg = "red_ember", modifiers = ["bold"]  }
+"ui.statusline.select" = { fg = "background", bg = "red_glowing", modifiers = ["bold"]  }
+
+"ui.popup" = { fg = "text", bg = "g_10" }
+"ui.info" = { fg = "orange_blaze", bg = "g_10" }
+"ui.window" = { fg = "g_7" }
+"ui.help" = { fg = "background", bg = "g_5" }
+
+"ui.bufferline" = { fg = "text", bg = "background" }
+"ui.bufferline.active" = { fg = "g_2", bg = "g_10", underline = { color = "orange_blaze", style = "line" } }
+"ui.bufferline.background" = { bg = "background" }
+
+"ui.text" = "text"
+"ui.text.focus" = { fg = "g_2", bg = "g_8", modifiers = ["bold"] }
+"ui.text.inactive" = { fg = "g_7" }
+"ui.text.directory" = { fg = "blue" }
+
+"ui.virtual" = "g_5"
+"ui.virtual.ruler" = "g_5" 
+"ui.virtual.indent-guide" = "g_8"
+"ui.virtual.wrap" = "g_8"
+"ui.virtual.inlay-hint" = {fg = "g_6", modifiers = [ "italic"]}
+"ui.virtual.jump-label" = { fg = "background", bg = "orange_blaze", modifiers = ["bold"] }
+
+"ui.selection" = { bg = "g_8" }
+
+"ui.cursor" = { fg = "background", bg = "g_4" }
+"ui.cursor.primary" = { fg = "background", bg = "g_0" }
+"ui.cursor.match" = {fg = "orange_smolder", modifiers = ["underlined"]}
+
+"ui.cursorline.primary" = { bg = "cursorline" }
+"ui.cursorline" = { bg = "g_11" }
+
+"ui.highlight" = { fg = "orange_blaze", bg = "cursorline", underline = {color = "orange_smolder", style = "dotted"}, modifiers = ["bold"] }
+
+"ui.menu" = { fg = "g_2", bg = "g_10" }
+"ui.menu.selected" = { modifiers = ["reversed"] }
+
+"diagnostic.error" = { underline = { color = "red_flame", style = "curl" } }
+"diagnostic.warning" = { underline = { color = "orange_golden", style = "curl" } }
+"diagnostic.info" = { underline = { color = "g_2", style = "curl" } }
+"diagnostic.hint" = { underline = { color = "g_4", style = "curl" } }
+"diagnostic.unnecessary" = { modifiers = ["dim"] }
+
+error = "red_flame"
+warning = "orange_golden"
+info = "g_2"
+hint = "g_4"
+
+[palette]
+cursorline = "#212121"
+text = "#b4b4b4"
+red_flame = "#C53030"
+red_glowing = "#DF6464"
+red_ember = "#B14242"
+orange_glow = "#D87C4A"
+orange_blaze = "#C4693D"
+orange_smolder = "#E49A44"
+orange_golden = "#E5A72A"
+blue = "#4A8B8B"
+green_light = "#629C7D"
+green = "#1E6F54"
+background = "#121212"
+g_0 = "#e5e5e5"
+g_1 = "#e5e5e5"
+g_2 = "#d5d5d5"
+g_3 = "#b4b4b4"
+g_4 = "#a7a7a7"
+g_5 = "#949494"
+g_6 = "#737373"
+g_7 = "#535353"
+g_8 = "#323232"
+g_9 = "#212121"
+g_10 = "#1d1d1d"
+g_11 = "#191919"
+g_12 = "#151515"
