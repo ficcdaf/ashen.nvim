@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.11.0](https://github.com/ficcdaf/ashen.nvim/compare/v0.10.0...v0.11.0) (2025-03-07)
+
+
+### Features
+
+* **extras:** added helix theme ([533d349](https://github.com/ficcdaf/ashen.nvim/commit/533d3494225ea44bd9a0c3ae45e01b3dcbe32d0f))
+
+
+### Bug Fixes
+
+* non-default variants can now be loaded ([adc111c](https://github.com/ficcdaf/ashen.nvim/commit/adc111c573cd509809377546102ec4d3aefeaede))
+
 ## [0.10.0](https://github.com/ficcdaf/ashen.nvim/compare/v0.9.0...v0.10.0) (2025-02-03)
 
 
