@@ -3,21 +3,21 @@
 _Coding is already hard on the brain, so it should at least be easy on the
 eyes._
 
-Ashen is a warm, muted colorscheme that evokes the feeling of embers sizzling
-out in an old fire pit. It features red & orange tones, plenty of grayscale, and
-hints of teal.
+Ashen is a warm, muted colorscheme that evokes the feeling of embers
+sizzling out in an old fire pit. It features red & orange tones, plenty of
+grayscale, and hints of teal.
 
 ![Lua, Python, and Go code in the Ashen theme.](assets/preview.png "Lua, Python, and Go code in the Ashen theme.")
 
 This repository only contains the implementation of Ashen for Neovim. It's
-hosted on [sr.ht](https://git.sr.ht/~ficd/ashen.nvim) and mirrored on
-[GitHub](https://github.com/ficcdaf/ashen.nvim) for your convenience. Please
-check the main monorepo at [sr.ht/~ficd/ashen](https://sr.ht/~ficd/ashen) for
-implementations of Ashen for other software.
+hosted on [Codeberg](https://codeberg.org/ficd/ashen.nvim) and mirrored on
+[GitHub](https://github.com/ficcdaf/ashen.nvim) for your convenience.
+Please check the main monorepo on
+[Codeberg](https://codeberg.org/ficd/ashen) for implementations of Ashen
+for other software.
 
-> **Note**: This project is in maintenance mode because I no longer use Neovim.
-> If you want to contribute, please consult the [contributing](#contributing)
-> section.
+> **Note**: This project is in maintenance mode because I no longer use
+> Neovim. I am happy to accept contributions.
 
 ## Contents
 
@@ -45,7 +45,6 @@ implementations of Ashen for other software.
     - [Render-markdown.nvim](#render-markdownnvim)
   - [Extras](#extras)
   - [Acknowledgements](#acknowledgements)
-  - [Contributing](#contributing)
 
 <!--toc:end-->
 
@@ -78,8 +77,8 @@ Using [lazy.nvim](https://lazy.folke.io/):
 }
 ```
 
-You can load Ashen anywhere in your Neovim configuration. You only need to call
-`setup` if you want to change any settings!
+You can load Ashen anywhere in your Neovim configuration. You only need to
+call `setup` if you want to change any settings!
 
 ```lua
 vim.cmd("colorscheme ashen")
@@ -89,7 +88,8 @@ vim.cmd("colorscheme ashen")
 require("ashen").load()
 ```
 
-If you're using [LazyVim](https://www.lazyvim.org/), I recommend the following:
+If you're using [LazyVim](https://www.lazyvim.org/), I recommend the
+following:
 
 ```lua
 return {
@@ -115,10 +115,11 @@ require("lazy").setup({
 
 ## Plugins
 
-Many plugins are already "supported" because they use standard Neovim highlight
-groups. However, some plugins require explicit support from color schemes.
-Additionally, some plugins may require extra setup to work with Ashen. Please
-see [Plugin Configuration](#plugin-configuration) for more details.
+Many plugins are already "supported" because they use standard Neovim
+highlight groups. However, some plugins require explicit support from
+color schemes. Additionally, some plugins may require extra setup to work
+with Ashen. Please see [Plugin Configuration](#plugin-configuration) for
+more details.
 
 | Plugin               | Requires Configuration |
 | -------------------- | ---------------------- |
@@ -144,15 +145,15 @@ see [Plugin Configuration](#plugin-configuration) for more details.
 <!-- prettier-ignore-start -->
 
 > [!WARNING]
-> If you choose to set any options, please note that `setup` _only_ sets up the
-> configuration and does **not** load the theme! You must call
+> If you choose to set any options, please note that `setup` _only_ sets
+> up the configuration and does **not** load the theme! You must call
 > `colorscheme ashen` or `require("ashen").load()` _after_ `setup`!
 
 <!-- prettier-ignore-end -->
 
-You can pass an options table to the `setup` function to configure Ashen, the
-same you would any other plugin. If you use `lazy.nvim`, you can set options as
-shown in [installation](#installation)!
+You can pass an options table to the `setup` function to configure Ashen,
+the same you would any other plugin. If you use `lazy.nvim`, you can set
+options as shown in [installation](#installation)!
 
 ```lua
 require("ashen").setup({
@@ -162,19 +163,19 @@ require("ashen").setup({
 vim.cmd("colorscheme ashen")
 ```
 
-The default settings will work for most people. However, extensive configuration
-options are provided.
+The default settings will work for most people. However, extensive
+configuration options are provided.
 
 <!-- prettier-ignore-start -->
 
 > [!TIP]
-> If you are not changing any of the defaults, avoid calling `setup` or setting
-> any `opts` -- your startup time will be faster!
+> If you are not changing any of the defaults, avoid calling `setup` or
+> setting any `opts` -- your startup time will be faster!
 
 <!-- prettier-ignore-end -->
 
-All available settings, along with their default values, are listed below. User
-provided settings will be merged with the defaults.
+All available settings, along with their default values, are listed below.
+User provided settings will be merged with the defaults.
 
 <details>
   <summary>Available Settings</summary>
@@ -252,8 +253,8 @@ opts = {
 
 ### Style Presets
 
-The following presets are available. They are off by default, and you may choose
-to enable them in your configuration:
+The following presets are available. They are off by default, and you may
+choose to enable them in your configuration:
 
 ```lua
 opts = {
@@ -269,11 +270,11 @@ opts = {
 <details>
 <summary>Click to expand</summary>
 
-You can override any color in Ashen's palette, or set new colors entirely. The
-`colors` setting accepts a table of `ColorName = HexCode` pairs, where they are
-both strings, with `ColorName` corresponding to an Ashen color, and `HexCode`
-being a `#` prefixed hexadecimal color code. For an list of available color
-names, please see [colors.lua](./lua/ashen/colors.lua).
+You can override any color in Ashen's palette, or set new colors entirely.
+The `colors` setting accepts a table of `ColorName = HexCode` pairs, where
+they are both strings, with `ColorName` corresponding to an Ashen color,
+and `HexCode` being a `#` prefixed hexadecimal color code. For an list of
+available color names, please see [colors.lua](./lua/ashen/colors.lua).
 
 Please see the following example:
 
@@ -291,8 +292,8 @@ opts = {
 <!-- prettier-ignore-start -->
 
 > [!TIP]
-> Made a palette you're proud of? It could become Ashen's next "theme variant"
-> -- don't be afraid to open a feature request for it!
+> Made a palette you're proud of? It could become Ashen's next "theme
+> variant" -- don't be afraid to open a feature request for it!
 
 <!-- prettier-ignore-end -->
 
@@ -342,22 +343,23 @@ You can find a detailed explanation of the HighlightMap type below.
 </details>
 
 Users can override Ashen's highlight group definitions, or set new ones
-entirely. There are two options under the `hl` setting: `force_override` and
-`merge_override`.
+entirely. There are two options under the `hl` setting: `force_override`
+and `merge_override`.
 
 The former will _completely_ overwrite the given highlight group; existing
-properties are **not** preserved. An empty table `{}` means Ashen will _clear_
-that highlight group.
+properties are **not** preserved. An empty table `{}` means Ashen will
+_clear_ that highlight group.
 
-The latter will _merge_ properties: it will override _only_ the properties you
-specify, and keep non-conflicting Ashen defaults.
+The latter will _merge_ properties: it will override _only_ the properties
+you specify, and keep non-conflicting Ashen defaults.
 
-You can also _link_ arbitrary highlight groups. Links defined in `hl.link` take
-priority over all other links set by Ashen. `hl.link` must be a key-value table
-in which the key is the link's _origin_ and the value is its _target_.
+You can also _link_ arbitrary highlight groups. Links defined in `hl.link`
+take priority over all other links set by Ashen. `hl.link` must be a
+key-value table in which the key is the link's _origin_ and the value is
+its _target_.
 
-Note that both **hexadecimal color codes** and **Ashen color names** are valid
-inputs for color parameters.
+Note that both **hexadecimal color codes** and **Ashen color names** are
+valid inputs for color parameters.
 
 ```lua
 -- full example
@@ -387,30 +389,32 @@ hl = {
 <details>
 <summary>Click to expand</summary>
 
-The following explanation of the terminal palette applies to both the Neovim
-terminal and some [extra](#extras) themes.
+The following explanation of the terminal palette applies to both the
+Neovim terminal and some [extra](#extras) themes.
 
 <details>
 <summary>Explanation of terminal palette</summary>
 
-The palette for the built-in Neovim terminal follows the standard 16-color Xterm
-palette. `ashen.nvim` sets these to the same colors as in the terminal theme
-[extras](#extras).
+The palette for the built-in Neovim terminal follows the standard 16-color
+Xterm palette. `ashen.nvim` sets these to the same colors as in the
+terminal theme [extras](#extras).
 
-Note that, by default, many palette colors do not match their expected "names"
--- for example, `green` is set to a shade of orange. This is to stay consistent
-with Ashen's visual identity; while Ashen does _have_ a green color in its
-Neovim palette, setting it in the terminal theme results in an overuse of the
-color; which appears jarring in contrast with how Ashen looks in Neovim.
+Note that, by default, many palette colors do not match their expected
+"names" -- for example, `green` is set to a shade of orange. This is to
+stay consistent with Ashen's visual identity; while Ashen does _have_ a
+green color in its Neovim palette, setting it in the terminal theme
+results in an overuse of the color; which appears jarring in contrast with
+how Ashen looks in Neovim.
 
-Furthermore, note that the `bright` colors (except `bright black`) are set to
-the _same_ color codes as their "regular" counterparts. This is for consistency
-with Ashen's minimal Neovim palette -- as a design goal, the terminal themes
-should not appear jarring next to the standard Neovim theme.
+Furthermore, note that the `bright` colors (except `bright black`) are set
+to the _same_ color codes as their "regular" counterparts. This is for
+consistency with Ashen's minimal Neovim palette -- as a design goal, the
+terminal themes should not appear jarring next to the standard Neovim
+theme.
 
-The default terminal palette is carefully selected to maintain the visual feel
-while retaining important semantic meanings, such as `red` and `yellow` for
-errors and warnings in compiler output.
+The default terminal palette is carefully selected to maintain the visual
+feel while retaining important semantic meanings, such as `red` and
+`yellow` for errors and warnings in compiler output.
 
 A mapping of index to Xterm color names is provided below.
 
@@ -435,9 +439,10 @@ A mapping of index to Xterm color names is provided below.
 
 </details>
 
-The `terminal.colors` field of the `opts` table should be a mapping of Xterm
-indexes to hexadecimal color codes. Please note that the indexes are a C-style
-zero indexed array and _not_ a Lua array - the count starts from `0`, not `1`!
+The `terminal.colors` field of the `opts` table should be a mapping of
+Xterm indexes to hexadecimal color codes. Please note that the indexes are
+a C-style zero indexed array and _not_ a Lua array - the count starts from
+`0`, not `1`!
 
 ```lua
 ---@alias AnsiMap table<integer, HexCode> -- where integer ∈ [0, 15]
@@ -483,15 +488,16 @@ behaviour, you can set `plugins.autoload` to `false`.
 <details>
 <summary>Exceptions</summary>
 
-- `trailblazer` needs to be loaded manually even if `plugins.autoload == true`.
+- `trailblazer` needs to be loaded manually even if
+  `plugins.autoload == true`.
 
 </details>
 
 #### Manual Loading
 
-You can manually load any plugin integration on-demand in your Neovim config by
-using the `load_plugin` function. The same naming rules apply as for
-`plugins.override`, please see below for more details.
+You can manually load any plugin integration on-demand in your Neovim
+config by using the `load_plugin` function. The same naming rules apply as
+for `plugins.override`, please see below for more details.
 
 ```lua
 -- example
@@ -500,9 +506,9 @@ require("ashen.plugins").load_plugin("flash")
 
 #### Override
 
-You can provide a list of plugin names as an "override". The names must match
-the filenames in [lua/ashen/plugins](./lua/ashen/plugins/), with the `.lua`
-extension removed, and exclude `init.lua`.
+You can provide a list of plugin names as an "override". The names must
+match the filenames in [lua/ashen/plugins](./lua/ashen/plugins/), with the
+`.lua` extension removed, and exclude `init.lua`.
 
 For example:
 
@@ -515,10 +521,10 @@ For example:
 }
 ```
 
-Overriding behaves differently depending on whether autoloading is enabled. If
-`plugins.autoload` is set, the overridden plugins will **not** be loaded
-automatically. If autoloading is disabled, the overridden plugins **will** be
-loaded automatically.
+Overriding behaves differently depending on whether autoloading is
+enabled. If `plugins.autoload` is set, the overridden plugins will **not**
+be loaded automatically. If autoloading is disabled, the overridden
+plugins **will** be loaded automatically.
 
 </details>
 
@@ -529,8 +535,8 @@ loaded automatically.
 <details>
 <summary>Click to expand</summary>
 
-If FzfLua's colors aren't looking quite right, please make sure that you have
-disabled `fzf_colors` in the settings:
+If FzfLua's colors aren't looking quite right, please make sure that you
+have disabled `fzf_colors` in the settings:
 
 ```lua
 {
@@ -550,11 +556,12 @@ disabled `fzf_colors` in the settings:
 <details>
 <summary>Click to expand</summary>
 
-Ashen comes with a preconfigured Lualine theme that includes a word counter for
-Markdown, Text, and Latex files. Optionally,
-[noice.nvim](https://github.com/folke/noice.nvim) is used to indicate Macro
-recording status, and [pomo.nvim](https://github.com/epwalsh/pomo.nvim) is
-supported. The following is an example of how to configure Lualine to use Ashen:
+Ashen comes with a preconfigured Lualine theme that includes a word
+counter for Markdown, Text, and Latex files. Optionally,
+[noice.nvim](https://github.com/folke/noice.nvim) is used to indicate
+Macro recording status, and
+[pomo.nvim](https://github.com/epwalsh/pomo.nvim) is supported. The
+following is an example of how to configure Lualine to use Ashen:
 
 ```lua
 return {
@@ -574,8 +581,9 @@ return {
 }
 ```
 
-> I am working on improving the word counter and releasing it as a separate
-> plugin. When that happens, Ashen will be updated to support it out of the box.
+> I am working on improving the word counter and releasing it as a
+> separate plugin. When that happens, Ashen will be updated to support it
+> out of the box.
 
 </details>
 
@@ -584,9 +592,9 @@ return {
 <details>
 <summary>Click to expand</summary>
 
-Trailblazer tends to overwrite the highlight groups set by Ashen. Therefore, you
-may need to invoke Ashen's Trailblazer setup immediately _after_ loading
-Trailblazer. Please see the following example:
+Trailblazer tends to overwrite the highlight groups set by Ashen.
+Therefore, you may need to invoke Ashen's Trailblazer setup immediately
+_after_ loading Trailblazer. Please see the following example:
 
 ```lua
 return {
@@ -614,9 +622,9 @@ return {
 <details>
 <summary>Click to expand</summary>
 
-Ashen will support `render-markdown` OOTB with no additional configuration. You
-may optionally consider including the following icons in your setup. Note they
-may not render properly in all browsers.
+Ashen will support `render-markdown` OOTB with no additional
+configuration. You may optionally consider including the following icons
+in your setup. Note they may not render properly in all browsers.
 
 ```lua
 -- as part of render-markdown.nvim setup
@@ -643,13 +651,5 @@ repository, [sr.ht/~ficd/ashen](https://sr.ht/~ficd/ashen).
 ## Acknowledgements
 
 Ashen was inspired by
-[nvim-noirbuddy](https://github.com/jesseleite/nvim-noirbuddy) and Dark Souls 3.
-
-## Contributing
-
-This project is in maintenance mode because I don't use Neovim anymore. I do,
-however, accept contributions. You can open a ticket on the
-[ticket tracker](https://todo.sr.ht/~ficd/ashen) or send patches and inquiries
-to the [mailing list](https://lists.sr.ht/~ficd/ashen). Consult the
-[sr.ht manual](https://man.sr.ht/git.sr.ht/#sending-patches-upstream) for
-guidance on how to contribute via email.
+[nvim-noirbuddy](https://github.com/jesseleite/nvim-noirbuddy) and Dark
+Souls 3.
